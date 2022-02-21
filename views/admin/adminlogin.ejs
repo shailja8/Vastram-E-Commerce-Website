@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <%- include("../partial/admin-partial/_bootstrap_files.ejs")%>
+ <link rel="stylesheet" href="/admin/css/style1.css"/>
+
+</head>
+
+<body>
+  <div class="container main-image">
+    <div class="row">
+      
+      <div class="col-sm-6 logo fade-in-image">
+        <img id="logo" src="/admin/images/vastram-logo.png" alt="" height="500px" width="400px">
+      </div>
+
+      <div class="col-sm-6 ">
+        
+          
+            <div class=" justify-content-center align-items-center">
+                  <div class="card-body">
+                      <h2 class="fw-bold text-uppercase text-center mb-5">Login</h2>
+                      
+                      <form action="/admin/login" method="post">
+                        <div class="form-outline mb-4">
+                          <label class="form-label">Email</label>
+                          <input type="email" id="" class="form-control" placeholder="Enter email" name="email" />
+                        </div>
+          
+                        <div class="form-outline  mb-4">
+                          <label class="form-label">Password</label>
+                          <input type="password" id="" class="form-control" placeholder="Enter email" name="password " />
+                        </div>
+          
+                        <p class="small mb-5 "><a class="text-white-50 " href="#">Forgot password?</a></p>
+                        <button class=" small btn btn-outline-dark btn-border btn-success example_a" type="submit">Login</button>
+                      </form>
+                      
+                  </div>
+            </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
