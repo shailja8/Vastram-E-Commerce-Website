@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <%- include("../partial/user-partial/_bootstrap_files.ejs")%>
+ <link rel="stylesheet" href="/user/css/register-style.css"/>
+
+</head>
+
+<body>
+  <script src="/user/js/register-validation.js"></script>
+
+  <div class="container-fluid main-image">
+           <div class="row"  id="enquiryForm" >
+              <div class="col-12">
+                <form class="enquiry" action="/user/register" method="post">
+                  <center><h2>Sign Up</h2></center>
+                  
+                  <div class="form-group">
+                    <label>Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      class="form-control"
+                      autocomplete="off"
+                      placeholder="Enter Name"
+                      onkeyup="validateName()"
+                    />
+                  <small id="nameError"></small>
+                  </div>
+      
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      class="form-control"
+                      placeholder="Enter Email-Id"
+                      onkeyup="validateEmail()"
+                    />
+                    <small id="emailError"></small>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Mobile</label>
+                    <input
+                      type="text"
+                      id="mobile"
+                      name="mobile"
+                      class="form-control"
+                      placeholder="Enter Mobile no."
+                      onkeyup="validateMobile()"
+                      />
+                     <small id="mobileError"></small> 
+                  </div>
+      
+                  <div class="form-group">
+                    <label>Address</label>
+                     <textarea name="address" id="" class="form-control" placeholder="Enter Address" onkeyup="validateAddress()"></textarea>
+                    <small id="addressError"></small>
+                </div>
+      
+                  <div class="form-group">
+                    <label>Gender :</label>
+                    &nbsp; &nbsp; &nbsp; &nbsp; Male &nbsp;
+                    <input type="radio" name="gender" value="male" id="male" onkeyup="validateGender()"/>
+                    &nbsp; &nbsp; &nbsp; &nbsp; Female &nbsp;
+                    <input type="radio" name="gender" value="female" id="female" onkeyup="validateGender()" />
+                    <small id="genderError"></small>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Password</label>
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      class="form-control"
+                      autocomplete="off"
+                      placeholder="Enter Password"
+                      onkeyup="validatePassword()"
+                    />
+                    <small id="passwordError"></small>
+                  </div>
+      
+                  
+                  <div class="form-group">
+                    <center>
+                      <button type="submit" class="btn btn-primary">Register</button>
+                    </center>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>  
+</body>
+</html>
