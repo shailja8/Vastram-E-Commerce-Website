@@ -47,5 +47,22 @@ exports.registerPost = (request,response)=>{
     });
 }
 exports.menPage =(request,response)=>{
-    Product.fetchAllMen().then().catch();
+    Product.fetchAllMen().then(result=>{
+        console.log(result);
+        response.render("user/menProductList.ejs",{
+            productList : result
+        });
+    }).catch(err=>{
+        console.log(err);
+        response.send("Something went wrong!!");
+    });
+}
+exports.womenPage =(request,response)=>{
+    Product.fetchAllWomen().then(result=>{
+        console.log(result);
+        response.send("hello user girls");
+    }).catch(err=>{
+        console.log(err);
+        response.send("Something went wrong!!");
+    });
 }

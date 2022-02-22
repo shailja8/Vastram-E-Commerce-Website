@@ -15,4 +15,7 @@ request.post("/register",userRouter.registerPost);
 
 request.get("/men",userRouter.menPage);
 
+request.get("/women",userRouter.womenPage);
+
+
 module.exports = request;

@@ -9,7 +9,7 @@ module.exports = class Product{
             this.p_size=p_size;
             this.p_image=p_image;
         }
-fetchAllMen(){
+static fetchAllMen(){
     return new Promise((resolve,reject)=>{
         pool.getConnection((err,con)=>{
             if(err)
@@ -17,6 +17,7 @@ fetchAllMen(){
             else{
             let sql = "select * from product where cat_id = 1";
               con.query(sql,(err,result)=>{
+                  con.release();
                  if(err)
                   reject(err);
                  else
@@ -28,9 +29,10 @@ fetchAllMen(){
     })
 }
 
-fetchAllWomen(){
+static fetchAllWomen(){
     return new Promise((resolve,reject)=>{
         pool.getConnection((err,con)=>{
+            con.release();
             if(err)
             reject(err);
             else{
