@@ -1,7 +1,7 @@
 const pool = require('../connection/DbConnection');
 module.exports = class Category 
 {
-    constructor(catName,catimg) 
+    constructor(catName,catImg) 
     {
         this.catName = catName;
         this.catImg = catImg;
@@ -11,6 +11,7 @@ module.exports = class Category
         return new Promise((resolve,reject) => {
             pool.getConnection((err, con) => {
               if(!err){  
+                  console.log("inside sql")
                let sql = "insert into category(cat_name,cat_img) values(?,?)";
                con.query(sql,[this.catName,this.catImg],(err,result)=>{
                  con.release(); 
@@ -20,7 +21,7 @@ module.exports = class Category
               else 
                 reject(err);
             });
-        });
+        });                        
     }
     // delete(id) {
     //     return new Promise((resolve, reject) => {
