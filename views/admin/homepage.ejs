@@ -1,42 +1,83 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <%- include('../partial/admin-partial/_bootstrap_files.ejs')%>
-      <style>
-       .border{
-        border: 1px solid black;
-       }
-      </style>
-    </head>
 
-    <body>
-     <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-6 border">
-          <h1>Category</h1>
-        </div>
-        <div class="col-md-6">
+<head>
+  <title>
+    <%=title%>
+  </title>
+  <%- include('../partial/admin-partial/_bootstrap_files.ejs')%>
+    <style>
+      .navbar {
+        background-color: #192537;
+      }
 
+      .nav-item {
+        color: #4e4719;
+      }
+    </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+
+      <img src="/admin/images/mini-logo-navigation.png" height="70" alt="">
+
+      <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav">
+
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Category</a>
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item " data-toggle="modal" data-target="#myModal"> Add Category</a>
+
+              <!-- Modal -->
+              <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <a href="#" class="dropdown-item">View Category</a>
+            </div>
+          </div>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Product</a>
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item">Add Product</a>
+              <a href="#" class="dropdown-item">View Products</a>
+            </div>
+          </div>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Orderlist</a>
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item">View Orderlist</a>
+            </div>
+          </div>
+          <a href="#" class="nav-item nav-link" tabindex="-1">Queries</a>
         </div>
+        <div class="navbar-nav ms-auto">
+          <a href="#" class="nav-item nav-link">Log Out</a>
+        </div>
+
       </div>
+    </div>
+  </nav>
+</body>
 
-      <div class="row">
-        <div class="col-md-6">
-
-        </div>
-        <div class="col-md-6">
-
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-
-        </div>
-        <div class="col-md-6">
-
-        </div>
-      </div>
-     </div>
-    </body>
 </html>
