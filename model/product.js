@@ -1,5 +1,5 @@
 const pool=require("../connection/DbConnection");
-const products = [];
+// const products = [];
 
 module.exports = class Product{
         constructor(p_name,p_price,p_qty,cat_id,p_date,p_size,p_image){
@@ -50,6 +50,46 @@ static fetchAllWomen(){
         });
     })
 }
+    static fetchAllProduct(){
+        return new Promise((resolve,reject)=>{
+            pool.getConnection((err,con)=>{
+                con.release();
+                if(err)
+                reject(err);
+                else{
+                let sql = "select * from product";
+                  con.query(sql,(err,result)=>{
+                     if(err)
+                      reject(err);
+                     else
+                      resolve(result);
+                  });
+                
+                }
+            });
+        })
+    }
+
+    static fetchProductById(id){
+        return new Promise((resolve,reject)=>{
+            pool.getConnection((err,con)=>{
+                console.log(id);
+                if(err)
+                reject(err);
+                else{
+                let sql = "select * from product where id =?";
+                  con.query(sql,[parseInt(id)],(err,result)=>{
+                      con.release();
+                     if(err)
+                      reject(err);
+                     else
+                      resolve(result);
+                  });
+                
+                }
+            });
+        })
+    }
 // static findById(prodId) {
 //     return products.filter(product => product.id == prodId);
 // }

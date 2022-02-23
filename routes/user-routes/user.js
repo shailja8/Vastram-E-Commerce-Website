@@ -14,9 +14,14 @@ request.get("/register",userRouter.registerPage);
 
 request.post("/register",userRouter.registerPost);
 
+request.get("/signout",userRouter.signoutPage);
+
 request.get("/men",userRouter.menPage);
 
 request.get("/women",userRouter.womenPage);
+
+request.get("/displayProduct/:id",userRouter.displayProductPage);
+
 
 // request.post("/add-to-cart",userRouter.addToCart);
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('../partial/index-partial/_bootstrap_files.ejs')%>
+    <link rel="stylesheet" href="../../index/style.css">
+</head>
+<body>
+    <%- include('../partial/user-partial/_navigation1.ejs')%>
+<div class="col-lg-3 col-md-5 mt-5 mb-3">
+    <div class="card h-100">
+      <a href="/user/displayProduct/:id"
+        ><img
+          class="card-img-top"
+          src="\user\image\AllProduct\<%= product[0].p_image%>"
+          alt=""
+          height="400px"
+      /></a>
+      <div class="card-body">
+        <h4 class="card-title">
+          <a href="/user/displayProduct/:id"> <%= product[0].p_name%> </a>
+        </h4>
+        <h5>Rs. <%= product[0].p_price%></h5>
+        <!-- <p class="card-text">
+                                                
+                                                </p> -->
+      </div>
+      <div class="card-footer">
+      <!-- <form action="/user/add-to-cart" method="POST"> -->
+        <input type="hidden" name="id" value="<%=product[0].id%>">
+      </form>
+     </div>
+
+
+    </div>
+  </div>
+</body>
+</html>
