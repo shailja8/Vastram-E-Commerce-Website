@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <%- include('../partial/admin-partial/_bootstrap_files.ejs')%>
+</head>
+<body>
+   <%- include('../partial/admin-partial/_admin_nav.ejs')%>
+   <!--Table-->
+<table class="table table-hover table-fixed">
+
+   <!--Table head-->
+   <thead>
+     <tr>
+       <th>S.NO</th>
+       <th>Name</th>
+       <th>Image</th>
+       <th>Edit</th>
+       <th>Delete</th>
+     </tr>
+   </thead>
+   <!--Table head-->
+ 
+   <!--Table body-->
+   <tbody>
+      <%
+         var sno=1;
+         for(var i=0;i<result.length;i++)
+         {
+      %>
+         <tr>
+            <td><%=sno++%></td>
+            <td><%=result[i].cat_name%></td>
+            <td><%=result[i].cat_img%></td>
+            <td><a href="/admin/edit/<%=result[i].id%>" class="btn btn-primary">Edit</a></td>
+            <td><a href="/admin/delete/<%=result[i].id%>" class="btn btn-danger">Delete</a></td>
+         </tr>
+         
+      <%
+         }
+      %>
+     
+   </tbody>
+   <!--Table body-->
+ 
+ </table>
+ 
+</body>
+</html>
