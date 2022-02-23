@@ -1,5 +1,5 @@
 const express = require("express");
-const request = express.Router();
+const   request = express.Router();
 const userRouter = require("../../controller/user/UserController");
 const auth = require('../../middleware/user.auth');
 
@@ -17,5 +17,8 @@ request.get("/men",userRouter.menPage);
 
 request.get("/women",userRouter.womenPage);
 
+request.get("/about",userRouter.aboutPage);
+
+request.get("/contact",userRouter.contactPage);
 
 module.exports = request;

@@ -13,7 +13,7 @@ const bodyParser= require('body-parser');
 const fileupload = require('express-fileupload');
 
 const adminRoute= require('./routes/admin-routes/admin');
-const userRoute = require("./routes/user-routes/user");
+
 const categoryRouter = require('./routes/admin-routes/category');
 
 app.set("view engine","ejs");

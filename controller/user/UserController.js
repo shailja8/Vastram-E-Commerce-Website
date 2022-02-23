@@ -1,5 +1,6 @@
 const User = require("../../model/user.js");
 const Product = require("../../model/product.js");
+const { request, response } = require("express");
 // const Product = require("../../model/admin/admin");
 exports.loginPage=(request,response)=>{
    response.render("./user/userlogin.ejs");
@@ -49,7 +50,7 @@ exports.registerPost = (request,response)=>{
 exports.menPage =(request,response)=>{
     Product.fetchAllMen().then(result=>{
         console.log(result);
-        response.render("user/menProductList.ejs",{
+        response.render("./user/menProductList.ejs",{
             productList : result
         });
     }).catch(err=>{
@@ -65,4 +66,11 @@ exports.womenPage =(request,response)=>{
         console.log(err);
         response.send("Something went wrong!!");
     });
+}
+exports.aboutPage =(request,response)=>{
+    response.render("./user/about.ejs");
+
+}
+exports.contactPage =(request,response)=>{
+    response.render("user/contact.ejs");
 }
