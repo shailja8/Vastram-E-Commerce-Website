@@ -1,3 +1,7 @@
+exports.indexPage=(req,res)=>{
+    res.render("index/index.ejs");
+}
+
 const Product = require("../../model/product.js");
 exports.indexPage = (request,response)=>{
     response.render("/user/dashboard.ejs");

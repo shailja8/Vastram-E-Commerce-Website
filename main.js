@@ -4,8 +4,17 @@ const app= main();
 const path = require('path');
 
 
+const indexRouter = require('./routes/index-routes/index');
+const menRouter = require('./routes/index-routes/men');
+
+const womenRouter = require('./routes/index-routes/women');
+
+const adminRoute= require('./routes/admin-routes/admin');
+
+
 const userRoute = require("./routes/user-routes/user");
 const indexRoute = require("./routes/index-routes/index");
+
 
 const bodyParser= require('body-parser');
 const fileupload = require('express-fileupload');
@@ -34,3 +43,11 @@ app.use("/user",userRoute);
 app.use("/category",categoryRouter);
 app.listen(3000,()=>{console.log("--SERVER STARTED--")});
 
+
+app.use(menRouter);
+
+app.use(womenRouter);
+
+app.use(indexRouter);
+
+app.listen(3000,()=>{console.log("--SERVER STARTED--")});
