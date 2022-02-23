@@ -1,4 +1,6 @@
 const pool=require("../connection/DbConnection");
+const products = [];
+
 module.exports = class Product{
         constructor(p_name,p_price,p_qty,cat_id,p_date,p_size,p_image){
             this.p_name=p_name;
@@ -48,4 +50,7 @@ static fetchAllWomen(){
         });
     })
 }
+// static findById(prodId) {
+//     return products.filter(product => product.id == prodId);
+// }
 }

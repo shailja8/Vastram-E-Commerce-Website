@@ -1,0 +1,57 @@
+body{
+    /* background: #192537; */
+    background: #B57A51;
+ }
+ .navbar{
+    background: #192537;
+    padding-top: 0;
+    padding-bottom: 0;    
+}
+i.fa.fa-heart {
+    color: red;
+    margin-block:auto;
+    padding: 10px;
+  }
+  i.fa.fa-shopping-bag{
+    color: #E75480;
+    margin-block:auto;
+    
+  }
+  .navbar a {
+    float: right;
+    padding: 10px;
+    padding-top: 0;
+    padding-bottom: 0;
+    color: #B09E80;
+    /* color: #192537; */
+    text-decoration: none;
+    font-size: 20px;
+    font-family:  Simplifica;
+  
+  }
+.text{
+    margin-top: 40px;
+    /* font-family: 'Bradley Hand', cursive; */
+    font-family : 'Brush Script MT', cursive;
+    color: #fff;
+    font-size: 100px;
+  }
+  /* .img{
+   float: right;
+   display: flex;
+  
+  } */
+  .text1{
+    /* color: #900C19; */
+    color: #192537;
+    font-size: 15px;
+    margin: 10px;
+  }
+  .col-md-4{
+   
+    /* padding: 15%; */
+    
+  }
+  .col-md-8{
+   float: right;
+  }

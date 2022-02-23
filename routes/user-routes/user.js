@@ -21,4 +21,8 @@ request.get("/about",userRouter.aboutPage);
 
 request.get("/contact",userRouter.contactPage);
 
+// request.post("/add-to-cart",userRouter.addToCart);
+
+
+
 module.exports = request;

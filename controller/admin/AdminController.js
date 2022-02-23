@@ -1,5 +1,30 @@
 const Admin=require("../../model/Admin");
+exports.adminEdit=(req,res)=>{
+    var admin=new Admin();
+    Admin.fetchAllData(req.params.id)
+    .then((result)=>{
+        res.render("./admin/cat.edit.ejs",{result});
+    })
+    .catch((err)=>{
 
+    });
+    
+}
+exports.adminDelete=(req,res)=>{
+    Admin.delete(req.params.id)
+    .then((result)=>{
+        res.send("Category deleted successfully");
+    })
+    .catch();
+}
+exports.adminView=(req,res)=>{
+    var admin=new Admin();
+    admin.viewCat()
+    .then(result=>{
+      res.render("./admin/view_category.ejs",{result});
+  })
+  .catch();
+}
 exports.loginpage=(req,res)=>{
     res.render("./admin/adminlogin.ejs");
 }
@@ -10,12 +35,10 @@ exports.loginpost=(req,res)=>
      
      admin.checkLogin()
      .then((result)=>{
-          console.log("success");
           req.session.current_user = req.body.email; 
           res.redirect("/admin/homepage");
     })
     .catch((err)=>{
-        console.log("fail");
         res.send(err);
     });
 }
