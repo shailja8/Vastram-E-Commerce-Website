@@ -49,7 +49,7 @@ exports.registerPost = (request,response)=>{
 exports.menPage =(request,response)=>{
     Product.fetchAllMen().then(result=>{
         console.log(result);
-        response.render("user/menProductList.ejs",{
+        response.render("user/menProductList1.ejs",{
             productList : result
         });
     }).catch(err=>{
@@ -60,9 +60,19 @@ exports.menPage =(request,response)=>{
 exports.womenPage =(request,response)=>{
     Product.fetchAllWomen().then(result=>{
         console.log(result);
-        response.send("hello user girls");
+        response.render("user/womenProductList1.ejs",{
+            productList : result
+        });
     }).catch(err=>{
         console.log(err);
         response.send("Something went wrong!!");
     });
+
+// exports.addToCart = (request,response)=>{
+//         Product.findById(request.body.id)[0];
+//         Cart.save(addedProduct);
+//         response.redirect('Product added');
+//         console.log(Cart);
+//     }
 }
+
