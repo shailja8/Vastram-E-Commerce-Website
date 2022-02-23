@@ -9,4 +9,9 @@ request.post("/login",adminController.loginpost);
 
 request.get("/homepage",authenticate.authenticate_user,adminController.admin_homepage);
 
+request.get("/view",authenticate.authenticate_user,adminController.adminView);
+
+request.get("/delete/:id",authenticate.authenticate_user,adminController.adminDelete);
+
+request.get("/edit/:id",authenticate.authenticate_user,adminController.adminEdit);
 module.exports=request;

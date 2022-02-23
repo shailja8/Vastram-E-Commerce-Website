@@ -7,7 +7,43 @@ module.exports=class Admin
         this.email=email;
         this.password=password;
     }
+    
+    viewCat()
+    {
+        return new Promise((resolve,reject)=>{
+            pool.getConnection((err,con)=>{
+                if(err)
+                    reject(err);
+                else
+                {
+                    var sql="select * from category";
+                    con.query(sql,[],(err,result)=>{
+                        con.release();
+                        err?reject(err):resolve(result);
+                    });
+                }
+            });
+        });
+    }
 
+    static fetchAllData(id)
+    {
+        return new Promise((resolve,reject)=>{
+            pool.getConnection((err,con)=>{
+                if(err)
+                    reject(err);
+                else
+                {
+                    var sql="select * from category where id=?";
+                    con.query(sql,[id],(err,result)=>{
+                        con.release();
+                        err?reject(err):resolve(result);
+                    });
+                }
+            });
+        });
+    }
+    
     checkLogin()
     {
         return new Promise((resolve,reject)=>{
@@ -18,6 +54,23 @@ module.exports=class Admin
                 {
                     var sql="select * from admin where email=? and password=?";
                     con.query(sql,[this.email,this.password],(err,result)=>{
+                        con.release();
+                        err?reject(err):resolve(result);
+                    });
+                }
+            });
+        });
+    }
+
+    static delete(id){
+        return new Promise((resolve,reject)=>{
+            pool.getConnection((err,con)=>{
+                if(err)
+                    reject(err);
+                else 
+                {
+                    var sql="delete from category where id=?";
+                    con.query(sql,[id],(err,result)=>{
                         con.release();
                         err?reject(err):resolve(result);
                     });
