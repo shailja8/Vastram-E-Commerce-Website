@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('../partial/index-partial/_bootstrap_files.ejs')%>
+    <link rel="stylesheet" href="/index/style.css">
+    <link type="text/css" href="/index/magnifier.css" rel="stylesheet">
+    <script type="text/javascript" src="/index/js/magnifier.js"></script>
+</head>
+<body>
+    <%- include('../partial/index-partial/_navigation.ejs')%>
+
+<section class="product-display">
+  <div class="image-slider">
+    
+    <!-- <div class="product-images">
+      <img src="\index\images\indo-western2.jpg" class="active" alt="">
+      <img src="\index\images\indo-western3.jpg" alt="">
+      <img src="\index\images\indo-western4.jpg" alt="">
+      <img src="\index\images\indo-western5.jpg" alt="">
+    </div> -->
+    <div class="magnifier" style="height: 560px; width: 480px; margin: 0px;">
+      <div class="maglens">
+        <img class="maglarge" alt="example image" ismap="ismap" usemap="#kaart" src="\user\image\AllProduct\<%=product[0].p_image%>" style="height:1100px; width:1100px;"/>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="details">
+    <h2 class="product-name"><%=product[0].p_name%></h2>
+
+  <span class="product-price">Rs.<%=product[0].p_price%></span>
+  
+  <h4>Size available : <%=product[0].p_size%></h4>
+ <button class="btn cart-btn">Add to cart</button>
+ <button class="btn wishlist-btn">Add to wishlist</button>
+
+ <p class="product-desc"><%=product[0].description%></p>
+
+</div>
+</section>
+</body>
+</html>

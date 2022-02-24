@@ -1,6 +1,5 @@
-const { Router } = require("express");
 const express = require("express");
-const request = express.Router();
+const   request = express.Router();
 const userRouter = require("../../controller/user/UserController");
 const auth = require('../../middleware/user.auth');
 
@@ -14,11 +13,20 @@ request.get("/register",userRouter.registerPage);
 
 request.post("/register",userRouter.registerPost);
 
+request.get("/signout",userRouter.signoutPage);
+
 request.get("/men",userRouter.menPage);
 
 request.get("/women",userRouter.womenPage);
 
+request.get("/displayProduct/:id",userRouter.displayProductPage);
+
+request.get("/about-us",userRouter.aboutPage);
+
+// request.get();
+
 // request.post("/add-to-cart",userRouter.addToCart);
+
 
 
 module.exports = request;

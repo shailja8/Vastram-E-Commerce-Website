@@ -1,5 +1,4 @@
 const pool = require("../connection/DbConnection");
-
 module.exports = class Product {
   constructor(
     p_name,
@@ -83,7 +82,7 @@ module.exports = class Product {
         else {
           let sql = "select * from product where cat_id = 1";
           con.query(sql, (err, result) => {
-            con.release();
+             con.release();
             if (err) reject(err);
             else resolve(result);
           });
@@ -94,12 +93,12 @@ module.exports = class Product {
 
   static fetchAllWomen() {
     return new Promise((resolve, reject) => {
-      pool.getConnection((err, con) => {
-        con.release();
+      pool.getConnection((err, con) => 
         if (err) reject(err);
         else {
           let sql = "select * from product where cat_id = 2";
           con.query(sql, (err, result) => {
+            con.release();
             if (err) reject(err);
             else resolve(result);
           });
@@ -108,3 +107,46 @@ module.exports = class Product {
     });
   }
 };
+
+static fetchAllProduct(){
+        return new Promise((resolve,reject)=>{
+            pool.getConnection((err,con)=>{
+                if(err)
+                reject(err);
+                else{
+                let sql = "select * from product";
+                  con.query(sql,(err,result)=>{
+                     con.release();
+                     if(err)
+                      reject(err);
+                     else
+                      resolve(result);
+                  });
+                
+                }
+            });
+        })
+    }
+
+static fetchProductById(id){
+        return new Promise((resolve,reject)=>{
+            pool.getConnection((err,con)=>{
+                console.log(id);
+                if(err)
+                reject(err);
+                else{
+                let sql = "select * from product where id =?";
+                  con.query(sql,[parseInt(id)],(err,result)=>{
+                      con.release();
+                     if(err)
+                      reject(err);
+                     else
+                      resolve(result);
+                  });
+                
+                }
+            });
+        })
+    }
+}
+
