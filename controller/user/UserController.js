@@ -1,5 +1,6 @@
 const User = require("../../model/user.js");
 const Product = require("../../model/product.js");
+const { request, response } = require("express");
 // const Product = require("../../model/admin/admin");
 exports.loginPage=(request,response)=>{
    response.render("./user/userlogin.ejs");
@@ -8,9 +9,11 @@ exports.loginPost = (request,response)=>{
     let user = new User();
     user.email = request.body.email;
     user.password = request.body.password;
+
     user.checkUser().then(result=>{
+       
         if(result.length>0){
-            request.session.current_user = user.email; 
+            request.session.current_user = result[0].id; 
           response.redirect("/user/dashboard");   
         }
         else
@@ -63,7 +66,9 @@ exports.signoutPage = (request,response)=>{
 exports.menPage =(request,response)=>{
     Product.fetchAllMen().then(result=>{
         console.log(result);
+
         response.render("user/menProductList1.ejs",{
+
             productList : result
         });
     }).catch(err=>{
@@ -102,5 +107,15 @@ exports.displayProductPage = (request,response)=>{
 //         response.redirect('Product added');
 //         console.log(Cart);
 //     }
+
+
+exports.aboutPage =(request,response)=>{
+    response.render("user/about.ejs");
+
+}
+exports.contactPage =(request,response)=>{
+    response.render("user/contact.ejs");
+}
+
 
 

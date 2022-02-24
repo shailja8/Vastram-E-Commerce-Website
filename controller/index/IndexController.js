@@ -29,3 +29,20 @@ exports.womenPage =(request,response)=>{
         response.send("Something went wrong!!");
     });
 }
+
+exports.aboutPage = (request,response)=>{
+     response.render("index/about.ejs");
+}
+
+exports.displayProductPage = (request,response)=>{
+        const id = request.params.id;
+        Product.fetchProductById(id).then(result=>{
+             console.log(result);
+            response.render("index/displayProduct.ejs",{
+                product : result
+            });
+        }).catch(err=>{
+            console.log(err);
+            response.send("something went wrong");
+        });
+}

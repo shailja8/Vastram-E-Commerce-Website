@@ -11,5 +11,8 @@ request.get("/men",indexRouter.menPage);
 
 request.get("/women",indexRouter.womenPage);
 
+request.get("/about-us",indexRouter.aboutPage);
+
+request.get("/displayProduct/:id",indexRouter.displayProductPage);
 module.exports = request;
 

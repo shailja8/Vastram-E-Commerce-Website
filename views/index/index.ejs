@@ -110,7 +110,7 @@
           <% for(product of productList) {%>
           <div class="col-lg-3 col-md-5 mt-5 mb-3">
             <div class="card h-100">
-              <a href="#"
+              <a href="/displayProduct/<%=product.id%>"
                 ><img
                   class="card-img-top"
                   src="\user\image\AllProduct\<%= product.p_image%>"
@@ -119,7 +119,7 @@
               /></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#"> <%= product.p_name%> </a>
+                  <a href="/displayProduct/<%=product.id%>"> <%= product.p_name%> </a>
                 </h4>
                 <h5>Rs. <%= product.p_price%></h5>
                 <!-- <p class="card-text">

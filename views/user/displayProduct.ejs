@@ -10,7 +10,49 @@
 </head>
 <body>
     <%- include('../partial/user-partial/_navigation1.ejs')%>
-<div class="col-lg-3 col-md-5 mt-5 mb-3">
+
+
+
+<section class="product-display">
+  <div class="image-slider">
+    <div class="product-images">
+      <img src="\index\images\indo-western2.jpg" class="active" alt="">
+      <img src="\index\images\indo-western3.jpg" alt="">
+      <img src="\index\images\indo-western4.jpg" alt="">
+      <img src="\index\images\indo-western5.jpg" alt="">
+    </div>
+  </div>
+  <div class="details">
+    <h2 class="product-name"><%=product.p_name%></h2>
+
+  <span class="product-price"><%=product.p_price%></span>
+  
+ <p class="product-size">Select Size</p>
+ 
+ <input type="radio" name="size" value="S" checked hidden id="S-size">
+ <label for="S-size" class="size-radio-btn check">S</label>
+
+ <input type="radio" name="size" value="M" hidden id="M-size">
+ <label for="M-size" class="size-radio-btn">M</label>
+
+ <input type="radio" name="size" value="L" hidden id="L-size">
+ <label for="L-size" class="size-radio-btn">L</label>
+
+ <input type="radio" name="size" value="XL" hidden id="XL-size">
+ <label for="XL-size" class="size-radio-btn">XL</label>
+
+ <input type="radio" name="size" value="XXL" hidden id="XXL-size">
+ <label for="XXL-size" class="size-radio-btn">XXL</label>
+ <br>
+ <button class="btn cart-btn">Add to cart</button>
+ <button class="btn wishlist-btn">Add to wishlist</button>
+
+</div>
+</section>
+
+
+
+    <div class="col-lg-3 col-md-5 mt-5 mb-3">
     <div class="card h-100">
       <a href="/user/displayProduct/:id"
         ><img
