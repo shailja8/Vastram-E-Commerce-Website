@@ -1,11 +1,10 @@
 <head>
-  <%- include('../partial/index-partial/_bootstrap_files.ejs')%>
+    <%- include('../partial/index-partial/_bootstrap_files.ejs')%>
     <link rel="stylesheet" href="../index/style.css">
 </head>
 <body>
   <!-- Page Content -->
-  <%- include('../partial/user-partial/_navigation1.ejs')%>
-
+  <%- include('../partial/index-partial/_navigation.ejs')%>
   <div class="container">
     <div class="row">
       <% for(product of productList) {%>
@@ -14,7 +13,7 @@
           <a href="#"
             ><img
               class="card-img-top"
-              src="\user\image\Men's\<%= product.p_image%>"
+              src="\user\image\women's\<%= product.p_image%>"
               alt=""
               height="400px"
           /></a>
@@ -31,10 +30,10 @@
           <form action="/user/add-to-cart" method="POST">
             <input type="hidden" name="id" value="<%=product.id%>">
             <button type="submit" class="btn btn-primary">Add to Cart</button>
-        </form>
+          </form>
          </div>
 
-          
+
         </div>
       </div>
       <% } %>

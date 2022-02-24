@@ -13,13 +13,17 @@ request.get("/register",userRouter.registerPage);
 
 request.post("/register",userRouter.registerPost);
 
+request.get("/signout",userRouter.signoutPage);
+
 request.get("/men",userRouter.menPage);
 
 request.get("/women",userRouter.womenPage);
 
-request.get("/about",userRouter.aboutPage);
+request.get("/displayProduct/:id",userRouter.displayProductPage);
 
-request.get("/contact",userRouter.contactPage);
+request.get("/about-us",userRouter.aboutPage);
+
+// request.get();
 
 // request.post("/add-to-cart",userRouter.addToCart);
 

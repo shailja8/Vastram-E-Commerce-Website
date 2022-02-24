@@ -9,9 +9,10 @@
   /* style for the DIV that is the magnifier lens */
   .maglens {
     position: absolute;
-    overflow: hidden;
-    width: 150px;
-    height: 150px;
+    /* overflow: hidden; */
+    width: 500px;
+    height: 1000px;
+    cursor:zoom-in;
   }
   
   /* style for the small IMG that appears on the page */
