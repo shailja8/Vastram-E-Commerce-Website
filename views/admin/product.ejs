@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Add Product Page</title>
+        <%- include('../partial/admin-partial/_bootstrap_files.ejs')%>
+    </head>
+    <body>
+        <%- include('../partial/admin-partial/_admin_nav.ejs')%>
+      <div class="container">
+        <form action="/product/add" method="POST" enctype="multipart/form-data">
+
+          <div class="form-group">
+            <label>Enter Product Name</label>
+            <input type="text" name="p_name" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <label>Category</label>
+            <select name="cat_id" class="form-control">
+                <option value="0">select category</option>
+                <%for(category of categories){%>
+                   <option value="<%=category.id%>"><%=category.cat_name%></option>
+                <%}%>    
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>Enter Product Price</label>
+            <input type="text" name="p_price"class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label>Enter Product Quantity</label>
+            <input type="text" name="p_qty"class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label>Enter Product Size</label>
+            <input type="text" name="p_size"class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label>Enter Product Description</label>
+            <input type="text" name="description"class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label>Upload Images(Fornt view, Back view, Left view, Rigth view)</label>
+            <br><input type="file" name="productImages" multiple/>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-danger">Cancel</button>
+            <button class="btn btn-success" type="Submit">Add</button>
+          </div>
+        </form>
+      </div>
+    </body>
+
+</html>
