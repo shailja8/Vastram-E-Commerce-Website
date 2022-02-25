@@ -1,83 +1,50 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title></title>
     <%- include('../partial/index-partial/_bootstrap_files.ejs')%>
-    <link rel="stylesheet" href="../../index/style.css">
+    <link rel="stylesheet" href="/index/style.css">
+    <link type="text/css" href="/index/magnifier.css" rel="stylesheet">
+    <script type="text/javascript" src="/index/js/magnifier.js"></script>
 </head>
 <body>
-    <%- include('../partial/user-partial/_navigation1.ejs')%>
-
-
-
+  <%- include('../partial/user-partial/_navigation1.ejs')%>
+ 
 <section class="product-display">
   <div class="image-slider">
-    <div class="product-images">
+    
+    <!-- <div class="product-images">
       <img src="\index\images\indo-western2.jpg" class="active" alt="">
       <img src="\index\images\indo-western3.jpg" alt="">
       <img src="\index\images\indo-western4.jpg" alt="">
       <img src="\index\images\indo-western5.jpg" alt="">
+    </div> -->
+    <div class="magnifier" style="height: 560px; width: 480px; margin: 0px;">
+      <div class="maglens">
+        <img class="maglarge" alt="example image" ismap="ismap" usemap="#kaart" src="/admin/images/<%=product[0].p_imagefront%>" style="height:1100px; width:1100px;"/>
+      </div>
     </div>
   </div>
+
+
   <div class="details">
-    <h2 class="product-name"><%=product.p_name%></h2>
+    <h2 class="product-name" style="font-size: 24px; font-family: philosopherregular; color: #192537;"><%=product[0].p_name%></h2>
 
-  <span class="product-price"><%=product.p_price%></span>
-  
- <p class="product-size">Select Size</p>
- 
- <input type="radio" name="size" value="S" checked hidden id="S-size">
- <label for="S-size" class="size-radio-btn check">S</label>
-
- <input type="radio" name="size" value="M" hidden id="M-size">
- <label for="M-size" class="size-radio-btn">M</label>
-
- <input type="radio" name="size" value="L" hidden id="L-size">
- <label for="L-size" class="size-radio-btn">L</label>
-
- <input type="radio" name="size" value="XL" hidden id="XL-size">
- <label for="XL-size" class="size-radio-btn">XL</label>
-
- <input type="radio" name="size" value="XXL" hidden id="XXL-size">
- <label for="XXL-size" class="size-radio-btn">XXL</label>
- <br>
+  <span class="product-price">&#8377; <%=product[0].p_price%>.00</span>
+  <p style="font-size: 12px; padding-bottom: 5px; padding-top: -5px;">( inclusive of all taxes ) </p>
+  <h4 style="font-family: philosopherregular; font-size: 18px;">Size Available : <%=product[0].p_size%></h4>
+  <hr>
  <button class="btn cart-btn">Add to cart</button>
  <button class="btn wishlist-btn">Add to wishlist</button>
+  <h4 style="font-family: philosopherregular;">Description </h4>
+ <p class="product-desc" style="font-family: philosopherregular;"><%=product[0].description%></p>
 
 </div>
 </section>
-
-
-
-    <div class="col-lg-3 col-md-5 mt-5 mb-3">
-    <div class="card h-100">
-      <a href="/user/displayProduct/:id"
-        ><img
-          class="card-img-top"
-          src="\user\image\AllProduct\<%= product[0].p_image%>"
-          alt=""
-          height="400px"
-      /></a>
-      <div class="card-body">
-        <h4 class="card-title">
-          <a href="/user/displayProduct/:id"> <%= product[0].p_name%> </a>
-        </h4>
-        <h5>Rs. <%= product[0].p_price%></h5>
-        <!-- <p class="card-text">
-                                                
-                                                </p> -->
-      </div>
-      <div class="card-footer">
-      <!-- <form action="/user/add-to-cart" method="POST"> -->
-        <input type="hidden" name="id" value="<%=product[0].id%>">
-      </form>
-     </div>
-
-
-    </div>
-  </div>
 </body>
 </html>

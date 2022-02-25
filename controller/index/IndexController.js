@@ -11,7 +11,7 @@ exports.indexPage = (request,response)=>{
 }
 exports.menPage =(request,response)=>{
     Product.fetchAllMen().then(result=>{
-        response.render("user/indexMenProductList.ejs",{
+        response.render("index/indexMenProductList.ejs",{
             productList : result
         });
     }).catch(err=>{
@@ -21,7 +21,7 @@ exports.menPage =(request,response)=>{
 }
 exports.womenPage =(request,response)=>{
     Product.fetchAllWomen().then(result=>{
-        response.render("user/indexWomenProductList.ejs",{
+        response.render("index/indexWomenProductList.ejs",{
             productList : result
         });
     }).catch(err=>{
