@@ -31,15 +31,16 @@
 
 
   <div class="details">
-    <h2 class="product-name"><%=product[0].p_name%></h2>
+    <h2 class="product-name" style="font-size: 24px; font-family: philosopherregular; color: #192537;"><%=product[0].p_name%></h2>
 
-  <span class="product-price">Rs.<%=product[0].p_price%></span>
-  
-  <h4>Size available : <%=product[0].p_size%></h4>
- <button class="btn cart-btn">Add to cart</button>
- <button class="btn wishlist-btn">Add to wishlist</button>
-
- <p class="product-desc"><%=product[0].description%></p>
+  <span class="product-price">&#8377; <%=product[0].p_price%>.00</span>
+  <p style="font-size: 12px; padding-bottom: 5px; padding-top: -5px;">( inclusive of all taxes ) </p>
+  <h4 style="font-family: philosopherregular; font-size: 18px;">Size Available : <%=product[0].p_size%></h4>
+  <hr>
+  <a href="/user"> <button class="btn cart-btn">Add to cart</button></a>
+  <a href="/user"> <button class="btn wishlist-btn">Add to wishlist</button></a>
+  <h4 style="font-family: philosopherregular;">Description </h4>
+ <p class="product-desc" style="font-family: philosopherregular;"><%=product[0].description%></p>
 
 </div>
 </section>

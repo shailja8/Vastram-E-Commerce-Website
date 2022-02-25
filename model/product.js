@@ -82,7 +82,7 @@ module.exports = class Product {
       pool.getConnection((err, con) => {
         if (err) reject(err);
         else {
-          let sql = "select * from product where cat_id = 1";
+          let sql = "select * from product where cat_id = 9";
           con.query(sql, (err, result) => {
              con.release();
             if (err) reject(err);
@@ -98,7 +98,7 @@ module.exports = class Product {
       pool.getConnection((err, con) => {
         if (err) reject(err);
         else {
-          let sql = "select * from product where cat_id = 2";
+          let sql = "select * from product where cat_id = 10";
           con.query(sql, (err, result) => {
             con.release();
             if (err) reject(err);
