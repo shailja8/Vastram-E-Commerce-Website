@@ -93,8 +93,9 @@ module.exports = class Product {
 
   static fetchAllWomen() {
     return new Promise((resolve, reject) => {
-      pool.getConnection((err, con) => 
-        if (err) reject(err);
+      pool.getConnection((err, con) => {
+        if(err)
+         reject(err);
         else {
           let sql = "select * from product where cat_id = 2";
           con.query(sql, (err, result) => {
@@ -106,7 +107,7 @@ module.exports = class Product {
       });
     });
   }
-};
+
 
 static fetchAllProduct(){
         return new Promise((resolve,reject)=>{
@@ -128,7 +129,7 @@ static fetchAllProduct(){
         })
     }
 
-static fetchProductById(id){
+ fetchProductById(id){
         return new Promise((resolve,reject)=>{
             pool.getConnection((err,con)=>{
                 console.log(id);
