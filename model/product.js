@@ -93,7 +93,7 @@ module.exports = class Product {
 
   static fetchAllWomen() {
     return new Promise((resolve, reject) => {
-      pool.getConnection((err, con) => 
+      pool.getConnection((err, con) => {
         if (err) reject(err);
         else {
           let sql = "select * from product where cat_id = 2";
@@ -106,7 +106,7 @@ module.exports = class Product {
       });
     });
   }
-};
+
 
 static fetchAllProduct(){
         return new Promise((resolve,reject)=>{
@@ -120,12 +120,15 @@ static fetchAllProduct(){
                      if(err)
                       reject(err);
                      else
-                      resolve(result);
+                      { 
+                        console.log("result");
+                        resolve(result);
+                      }
                   });
                 
                 }
             });
-        })
+        });
     }
 
 static fetchProductById(id){
@@ -149,4 +152,3 @@ static fetchProductById(id){
         })
     }
 }
-

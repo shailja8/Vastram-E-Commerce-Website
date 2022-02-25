@@ -4,7 +4,7 @@ const pool = mysql.createPool({
   host:'localhost',
   user: 'root',
   password:'root',
-  database:'vastram'
+  database:'vastramdb'
 }); 
 
 module.exports= pool;
