@@ -9,7 +9,7 @@ request.post("/login",adminController.loginpost);
 
 request.get("/homepage",authenticate.authenticate_user,adminController.admin_homepage);
 
-request.get("/view",authenticate.authenticate_user,adminController.adminView);
+request.get("/viewcategory",authenticate.authenticate_user,adminController.adminViewCategory);
 
 request.get("/delete/:id",authenticate.authenticate_user,adminController.adminDelete);
 
