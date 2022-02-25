@@ -10,5 +10,7 @@ request.get("/addproductpage",authenticate.authenticate_user,productController.a
 request.post("/add",authenticate.authenticate_user,uploadFiles.array('productImages'),productController.saveProduct);
 
 request.get("/viewproductpage",authenticate.authenticate_user,productController.viewproductpage);
+//request.post("/edit/:id",authenticate.authenticate_user,uploadFiles.array('productImages'),productController.editProduct);
+//request.get("/delete/:id",authenticate.authenticate_user,productController.deleteProduct);
 
 module.exports=request;
