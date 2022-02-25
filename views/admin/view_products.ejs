@@ -1,60 +1,74 @@
 <!DOCTYPE html>
 <html>
-<head>
-   <%- include('../partial/admin-partial/_bootstrap_files.ejs')%>
-</head>
-<body>
-   <%- include('../partial/admin-partial/_admin_nav.ejs')%>
-   <!--Table-->
-<table class="table table-hover table-fixed">
 
-   <!--Table head-->
-   <thead>
-     <tr>
-       <th>S.NO</th>
-       <th>Name</th>
-       <th>Price</th>
-       <th>Quantity</th>
-       <th>Category ID</th>
-       <th>Date</th>
-       <th>Size</th>
-       <th>Description</th>
-       <th>Image 1</th>
-       <th>Image 2</th>
-       <th>Image 3</th>
-       <th>Image 4</th>
-     </tr>
-   </thead>
-   <!--Table head-->
- 
-   <!--Table body-->
-   <tbody>
-      <%
-         var sno=1;
-         for(var i=0;i<result.length;i++)
-         {
-      %>
-         <tr>
-            <td><%=sno++%></td>
-            <td><%=result[i].p_name%></td>
-            <td><%=result[i].p_price%></td>
-            <td><%=result[i].p_qty%></td>
-            <td><%=result[i].cat_id%></td>
-            <td><%=result[i].p_date%></td>
-            <td><%=result[i].p_size%></td>
-            <td><%=result[i].p_description%></td>
-            <td><%=result[i].p_imagefront></td>
-            <td><%=result[i].p_imageback></td>
-            <td><%=result[i].p_imageright></td>
-            <td><%=result[i].p_imageleft></td>
-            <td><a href="/product/edit/<%=result[i].id%>" class="btn btn-primary">Edit</a></td>
-            <td><a href="/product/delete/<%=result[i].id%>" class="btn btn-danger">Delete</a></td>
-         </tr>    
-      <%
+<head>
+    <%- include('../partial/admin-partial/_bootstrap_files.ejs')%>
+    <style>
+        .desc {
+            height: 100px;
+            width: 100px;
+            overflow: hidden;
+            vertical-align: auto;
          }
-      %>
-   </tbody>
-   <!--Table body-->
- </table>
+    </style>
+</head>
+
+<body>
+    <%- include('../partial/admin-partial/_admin_nav.ejs')%>
+        <!--Table-->
+        <table class="table table-hover table-fixed">
+            <!--Table head-->
+            <thead>
+                <tr>
+                    <th>S.NO</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <!-- <th>Category ID</th>
+                    <th>Date</th> -->
+                    <th>Size</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <!-- <th>Image 2</th>
+                    <th>Image 3</th>
+                    <th>Image 4</th> -->
+                </tr>
+            </thead>
+            <!--Table head-->
+
+            <!--Table body-->
+            <tbody>
+                <% var sno=1; for(var i=0;i<result.length;i++) { %>
+                    <tr>
+                        <td>
+                            <%=sno++%>
+                        </td>
+                        <td>
+                            <%=result[i].p_name%>
+                        </td>
+                        <td>
+                            <%=result[i].p_price%>
+                        </td>
+                        <td>
+                            <%=result[i].p_qty%>
+                        </td>
+                        <!-- <td><%=result[i].cat_id%></td>
+                             <td><%=result[i].p_date%></td> -->
+                        <td>
+                            <%=result[i].p_size%>
+                        </td>
+                        <td>
+                           <div class="desc"> <%=result[i].description%></div>
+                        </td>
+                        <td><img src="/admin/images/<%=result[i].p_imagefront%>" height="80px" width="150px"></td>
+
+                        <td><a href="/product/edit/<%=result[i].id%>" class="btn btn-primary">Edit</a></td>
+                        <td><a href="/product/delete/<%=result[i].id%>" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                    <% } %>
+            </tbody>
+            <!--Table body-->
+        </table>
 </body>
+
 </html>

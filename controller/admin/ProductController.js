@@ -34,7 +34,7 @@ exports.saveProduct  = (req,res,next)=>{
     product.saveProduct()
     .then(result=>{
         res.send("Data added succesfully");
-        return res.redirect("/admin/homepage");
+        res.redirect("/admin/homepage");
     })
     .catch(err=>{
         console.log(err);
