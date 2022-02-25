@@ -1,9 +1,11 @@
 <head>
-    <%- include("../partial/user-partial/_bootstrap_files.ejs")%>
-
+  <%- include('../partial/index-partial/_bootstrap_files.ejs')%>
+    <link rel="stylesheet" href="../index/style.css">
 </head>
 <body>
   <!-- Page Content -->
+  <%- include('../partial/user-partial/_navigation1.ejs')%>
+
   <div class="container">
     <div class="row">
       <% for(product of productList) {%>
@@ -32,14 +34,7 @@
         </form>
          </div>
 
-          <!-- <div class="card-footer">
-            <a
-              class="btn btn-primary"
-              href="/products/<%=product.id%>"
-              role="button"
-              >Add To Cart</a
-            >
-          </div> -->
+          
         </div>
       </div>
       <% } %>

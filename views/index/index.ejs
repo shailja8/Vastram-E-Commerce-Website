@@ -105,21 +105,40 @@
           <span class="sr-only">Next</span>
         </button>
       </div>
-      <div class="container-fuild">
-      <div rows>
-      <div class="col-md-3">
+      <div class="container">
+        <div class="row">
+          <% for(product of productList) {%>
+          <div class="col-lg-3 col-md-5 mt-5 mb-3">
+            <div class="card h-100">
+              <a href="/displayProduct/<%=product.id%>"
+                ><img
+                  class="card-img-top"
+                  src="/admin/images/<%= product.p_imagefront%>"
+                  alt=""
+                  height="400px"
+              /></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="/displayProduct/<%=product.id%>"> <%= product.p_name%> </a>
+                </h4>
+                <h5>Rs. <%= product.p_price%></h5>
+                <!-- <p class="card-text">
+                                                        
+                                                        </p> -->
+              </div>
+              <div class="card-footer">
+              <form action="/user/add-to-cart" method="POST">
+                <input type="hidden" name="id" value="<%=product.id%>">
+              </form>
+             </div>
+    
+    
+            </div>
+          </div>
+          <% } %>
+        </div>
+        <!-- /.row -->
+      </div>
 
-      </div>
-      <div class="col-md-3">
-
-      </div>
-      <div class="col-md-3">
-
-      </div>
-      <div class="col-md-3">
-
-      </div>
-      </div>
-      </div>
 </body>
 </html>

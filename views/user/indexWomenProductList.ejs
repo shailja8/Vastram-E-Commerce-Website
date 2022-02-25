@@ -1,0 +1,48 @@
+<head>
+    <%- include('../partial/index-partial/_bootstrap_files.ejs')%>
+    <link rel="stylesheet" href="../index/style.css">
+</head>
+<body>
+  <!-- Page Content -->
+  <%- include('../partial/index-partial/_navigation.ejs')%>
+  <div class="container">
+    <div class="row">
+      <% for(product of productList) {%>
+      <div class="col-lg-3 col-md-5 mt-5 mb-3">
+        <div class="card h-100">
+          <a href="#"
+            ><img
+              class="card-img-top"
+              src="\user\image\women's\<%= product.p_image%>"
+              alt=""
+              height="400px"
+          /></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#"> <%= product.p_name%> </a>
+            </h4>
+            <h5>Rs. <%= product.p_price%></h5>
+            <!-- <p class="card-text">
+                                                    
+                                                    </p> -->
+          </div>
+          <div class="card-footer">
+          <form action="/user/add-to-cart" method="POST">
+            <input type="hidden" name="id" value="<%=product.id%>">
+            <button type="submit" class="btn btn-primary">Add to Cart</button>
+          </form>
+         </div>
+
+
+        </div>
+      </div>
+      <% } %>
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.col-lg-9 -->
+
+  <!-- /.row -->
+
+  <!-- /.container -->
+</body>

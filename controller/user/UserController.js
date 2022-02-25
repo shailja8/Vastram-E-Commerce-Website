@@ -1,5 +1,6 @@
 const User = require("../../model/user.js");
 const Product = require("../../model/product.js");
+const { request, response } = require("express");
 // const Product = require("../../model/admin/admin");
 exports.loginPage=(request,response)=>{
    response.render("./user/userlogin.ejs");
@@ -8,9 +9,11 @@ exports.loginPost = (request,response)=>{
     let user = new User();
     user.email = request.body.email;
     user.password = request.body.password;
+
     user.checkUser().then(result=>{
+       
         if(result.length>0){
-            request.session.current_user = user.email; 
+            request.session.current_user = result[0].id; 
           response.redirect("/user/dashboard");   
         }
         else
@@ -24,7 +27,15 @@ exports.loginPost = (request,response)=>{
 }
 
 exports.dashboardPage = (request,response)=>{
-        response.render("user/dashboard.ejs");
+    Product.fetchAllProduct().then(result=>{
+        response.render("user/dashboard.ejs",{
+            productList : result
+        });
+    }).catch(err=>{
+        console.log(err);
+        response.send("Something went wrong!!");
+    });
+       
 }
 
 exports.registerPage = (request,response)=>{
@@ -46,10 +57,18 @@ exports.registerPost = (request,response)=>{
         response.send("Registration Failed");
     });
 }
+
+exports.signoutPage = (request,response)=>{
+    request.session.destroy();
+    response.redirect("/");   
+}
+
 exports.menPage =(request,response)=>{
     Product.fetchAllMen().then(result=>{
         console.log(result);
+
         response.render("user/menProductList1.ejs",{
+
             productList : result
         });
     }).catch(err=>{
@@ -67,6 +86,20 @@ exports.womenPage =(request,response)=>{
         console.log(err);
         response.send("Something went wrong!!");
     });
+}
+
+exports.displayProductPage = (request,response)=>{
+    const id = request.params.id;
+    Product.fetchProductById(id).then(result=>{
+         console.log(result);
+        response.render("user/displayProduct.ejs",{
+            product : result
+        });
+    }).catch(err=>{
+        console.log(err);
+        response.send("something went wrong");
+    });
+}
 
 // exports.addToCart = (request,response)=>{
 //         Product.findById(request.body.id)[0];
@@ -74,5 +107,15 @@ exports.womenPage =(request,response)=>{
 //         response.redirect('Product added');
 //         console.log(Cart);
 //     }
+
+
+exports.aboutPage =(request,response)=>{
+    response.render("user/about.ejs");
+
 }
+exports.contactPage =(request,response)=>{
+    response.render("user/contact.ejs");
+}
+
+
 
