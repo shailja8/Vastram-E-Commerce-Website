@@ -4,7 +4,7 @@ exports.adminEdit = (req, res) => {
   var admin = new Admin();
   Admin.fetchAllData(req.params.id)
     .then((result) => {
-      res.render("./admin/cat_edit.ejs", { result });
+      res.render("./admin/edit-category.ejs", { result });
     })
     .catch((err) => {});
 };
@@ -17,7 +17,7 @@ exports.adminDelete = (req, res) => {
     .catch();
 };
 
-exports.adminView = (req, res) => {
+exports.adminViewCategory = (req, res) => {
   var admin = new Admin();
   admin
     .viewCat()

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('../partial/admin-partial/_bootstrap_files.ejs')%>
+    <style>
+      .navbar {
+        background-color: #192537;
+      }
+      .nav-item {
+        color: #4e4719;
+      }
+    </style>
+</head>
+
+<body>
+<form action="/product/update-product" method="post" enctype="multipart/form-data">
+ <div class="container"> 
+  <input type="hidden" name="id" class="form-control" value="<%=result[0].id%>" />
+        <!-- <div class="form-group">
+        <label>Enter Category Name</label>
+        <input type="text" name="catName" class="form-control" value="<%=result[0].cat_name%>" />
+      </div>
+      <div class="form-group">
+        <label>Enter Category Image</label>
+        <input type="file" name="catImg" value="<%=result[0].cat_img%>"/>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success" type="Submit">Update</button>
+      </div> -->
+      <div class="form-group">
+        <label>Enter Product Name</label>
+        <input type="text" name="p_name" class="form-control" value="<%=result[0].p_name%>"/>
+      </div>
+
+      <div class="form-group">
+        <label>Category</label>
+        <select name="cat_id" class="form-control">
+            <option value="<%=result[0].cat_id%>">select category</option>
+            <%for(category of categories){%>
+               <option value="<%=category.id%>"><%=category.cat_name%></option>
+            <%}%>    
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label>Enter Product Price</label>
+        <input type="text" name="p_price"class="form-control" value="<%=result[0].p_price %>"/>
+      </div>
+      <div class="form-group">
+        <label>Enter Product Quantity</label>
+        <input type="text" name="p_qty"class="form-control" value="<%=result[0].qty%>"/>
+      </div>
+      <div class="form-group">
+        <label>Enter Product Size</label>
+        <input type="text" name="p_size"class="form-control" value="<%= result[0].p_size%>"/>
+      </div>
+      <div class="form-group">
+        <label>Enter Product Description</label>
+        <input type="text" name="description"class="form-control" value="<%= result[0].description%>"/>
+      </div>
+      <div class="form-group">
+        <label>Upload Images(Fornt view, Back view, Left view, Rigth view)</label>
+        <br><input type="file" name="productImages" multiple />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-danger">Cancel</button>
+        <button class="btn btn-success" type="Submit">Update</button>
+      </div>
+  
+ </div>
+</form>
+</body>
+</html>
+<!-- //value="<%= result[0].p_imagefront,result[0].p_imageback,result[0].p_imageright,result[0].p_imageleft%>" -->
