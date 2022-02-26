@@ -15,6 +15,7 @@ const wishlistRoute = require('./routes/user-routes/wishlist');
 const cartRoute = require('./routes/user-routes/cart');
 
 
+
 app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());

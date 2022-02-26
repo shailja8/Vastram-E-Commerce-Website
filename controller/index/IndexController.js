@@ -1,4 +1,7 @@
+const { response } = require("express");
+//const Query = require("mysql/lib/protocol/sequences/Query");
 const Product = require("../../model/product.js");
+const Query = require("../../model/query"); 
 exports.indexPage = (request,response)=>{
     Product.fetchAllProduct().then(result=>{
         response.render("index/index.ejs",{
@@ -45,4 +48,12 @@ exports.displayProductPage = (request,response)=>{
             console.log(err);
             response.send("something went wrong");
         });
+}
+exports.queryPage =(request,response)=>{
+    var q = new Query;
+    q.send().then(()=>{
+      response.send("Query Sent.");
+    }).catch((err)=>{
+      response.send("Something went wrong!")
+    });
 }
