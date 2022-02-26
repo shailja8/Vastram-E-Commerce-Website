@@ -14,4 +14,7 @@ request.get("/viewcategory",authenticate.authenticate_user,adminController.admin
 request.get("/delete/:id",authenticate.authenticate_user,adminController.adminDelete);
 
 request.get("/edit/:id",authenticate.authenticate_user,adminController.adminEdit);
+
+request.get("/query",authenticate.authenticate_user,adminController.fetchQuery);
+
 module.exports=request;

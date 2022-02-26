@@ -68,36 +68,35 @@
 </div>
 </section>
 <script>
-  function addToWishlist(button,isLoggedIn,pid){
+  function addToWishlist(button,isLoggedIn,pid)
+  {
     if(isLoggedIn){
       console.log(pid);
       var buttonText = button.innerText;
-      if(buttonText == "Add To Wishlist"){
+      if(buttonText == "Add To Wishlist")
+      {
         $.ajax({
           url: "/wishlist/add-to-wishlist/"+pid,
           success: function(result){
             alert("Item Added In Cart");
             button.innerText = "Remove From Cart";
           }
-        });
-        
-       }
-    }   
-      else if(buttonText == "Remove From Wishlist"){
+        });     
+      }   
+      else if(buttonText == "Remove From Wishlist")
+      {
         $.ajax({
           url: "/wishlist/remove-to-wishlist/"+pid,
           success: function(result){
             alert("Item Removed From Cart..");
             button.innerText = "Add To Cart";
           }
-        });
+        });     
       }
     }
     else
       window.location.href = "/login";
-
   }
-
 </script>
 </body>
 </html>
