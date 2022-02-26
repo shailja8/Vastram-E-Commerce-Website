@@ -10,6 +10,8 @@ request.get("/women",indexRouter.womenPage);
 
 request.get("/about-us",indexRouter.aboutPage);
 
+request.get("/query",indexRouter.queryPage);
+
 request.get("/displayProduct/:id",indexRouter.displayProductPage);
 module.exports = request;
 

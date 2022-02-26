@@ -1,0 +1,31 @@
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addCategory">Open Modal</button>
+
+<!-- Modal -->
+<div class="modal fade" id="addCategory">
+  <div class="modal-dialog modal-dialog-centered">
+
+    <!-- Modal content-->
+    <div class="modal-header">
+      <!-- <div class="modal-header"> -->
+        <h4 class="modal-title"> Ask Query</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+      <!-- </div> -->
+      <div class="modal-body">
+          <form action="/index/send" method="post" enctype="multipart/form-data">
+           <div class="form-group">
+               <label>Enter Name</label>
+               <input type="text" name="username" class="form-control"/>
+           </div>
+           <div class="form-group">
+            <label>Enter Email</label>
+            <input type="email" name="useremail" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label>Enter Your Query</label>
+            <!-- <input type="text" name="" class="form-control"/> -->
+            <textarea name="userquery" class="form-control"></textarea>
+        </div>
+     </form>
+    </div>   
+        
