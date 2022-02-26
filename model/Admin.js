@@ -25,6 +25,22 @@ module.exports=class Admin
             });
         });
     }
+    
+    fetchQuery()
+    {
+       return new Promise((resolve,reject)=>{
+         pool.getConnection((err,con)=>{
+          if(!err)
+          {
+            var sql = "select * from query";
+            con.query(sql,[],(err,result)=>{
+              con.release();
+              err? reject(err) : resolve(result);
+            });
+          }
+         });           
+       });
+    }
 
     static fetchAllData(id)
     {
@@ -55,7 +71,11 @@ module.exports=class Admin
                     var sql="select * from admin where email=? and password=?";
                     con.query(sql,[this.email,this.password],(err,result)=>{
                         con.release();
-                        err?reject(err):resolve(result);
+                        //console.log(email);
+                        //console.log(password);
+                        console.log(this.email);
+                        console.log(this.password);
+                        err ? reject(err):resolve(result);
                     });
                 }
             });

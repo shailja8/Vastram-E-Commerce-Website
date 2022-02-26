@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <%- include('../partial/admin-partial/_bootstrap_files.ejs')%>
+</head>
+<body>
+   <%- include('../partial/admin-partial/_admin_nav.ejs')%>
+   <!--Table-->
+<table class="table table-hover table-fixed">
+
+   <!--Table head-->
+   <thead>
+     <tr>
+       <th>S.NO</th>
+       <th>Name</th>
+       <th>Email</th>
+       <th>Query</th>
+       <th>Response</th>
+     </tr>
+   </thead>
+   <!--Table head-->
+ 
+   <!--Table body-->
+   <tbody>
+      <%
+         var sno=1;
+         for(var i=0;i<result.length;i++)
+         {
+      %>
+         <tr>
+            <td><%=sno++%></td>
+            <td><%=result[i].name%></td>
+            <td><%=result[i].email%></td>
+            <td><%=result[i].query%></td>
+            <!-- <td><img src="/admin/images/<%=result[i].cat_img%>"  height="80px" width="150px"></td>
+            <td><a href="/admin/edit/<%=result[i].id%>" class="btn btn-primary">Edit</a></td> -->
+            <td><a href="#" class="btn btn-danger" data-toggle="modal"
+               data-target="#send-response">Send Response</a></td> 
+         </tr>
+         
+      <%
+         }
+      %>
+     
+   </tbody>
+   <!--Table body-->
+ </table>
+</body>
+<!-- The Modal -->
+<div class="modal fade" id="send-response">
+   <div class="modal-dialog modal-dialog-centered">
+     <div class="modal-content">
+       <!-- Modal Header -->
+       <div class="modal-header">
+         <h4 class="modal-title">Query Response</h4>
+         <button type="button" class="close" data-dismiss="modal">
+           &times;
+         </button>
+       </div>
+ 
+       <!-- Modal body -->
+       <div class="modal-body">
+         <form
+           action="/admin/send-response"
+           method="post"
+           enctype="multipart/form-data">
+           <div class="form-group">
+             <label>Enter Response</label><br>
+             <textarea id="" name="response" rows="5" cols="60"></textarea>
+           </div>
+           <input type="hidden" value="%<=result[i].email %>"  />
+           <!-- <div class="form-group">
+             <label>Enter Category Image</label>
+             <input type="file" name="catImg" />
+           </div>
+           <div class="form-group"> -->
+             <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+             <button class="btn btn-success" type="Submit">Send</button>
+           </div>
+         </form>
+       </div>
+     </div>
+   </div>
+ </div>
+</html>
