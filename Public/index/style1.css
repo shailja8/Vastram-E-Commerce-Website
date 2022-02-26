@@ -29,29 +29,54 @@ i.fa.fa-heart {
     font-family:  Simplifica;
   
   }
-.text{
-    margin-top: 40px;
-    /* font-family: 'Bradley Hand', cursive; */
+  .text{
     font-family : 'Brush Script MT', cursive;
     color: #fff;
     font-size: 100px;
+    
   }
-  /* .img{
-   float: right;
-   display: flex;
-  
-  } */
   .text1{
-    /* color: #900C19; */
     color: #192537;
     font-size: 15px;
     margin: 10px;
   }
-  .col-md-4{
-   
-    /* padding: 15%; */
-    
-  }
-  .col-md-8{
+
+  .col-md-6{
    float: right;
+  }
+  .btn {
+    background-color: #192537;
+    border: none;
+    font-size: 20px;
+  }
+  #dropdownMenuButton1{
+    margin: 10px;
+    color: #B09E80;
+  }
+  .dropdown-menu{
+    background-color: #192537;
+    text-align: center;
+    font-size: 10px;
+  }
+  .paragraph{
+    width: 500px;
+    height: 200px;
+    text-align: center;
+    margin-top: 80px;
+  }
+  .colorheading{
+    color: #B09E80;
+  }
+  /* col-md-6 textformate{
+    text-align: center;
+    
+  } */
+  /* span.text {
+    padding: 130px;
+  }
+  span.text1 {
+    padding: 130px;
+  } */
+  .footerFontColor{
+        color: #B09E80;
   }
