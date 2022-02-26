@@ -5,6 +5,7 @@ module.exports = class Product {
     p_price,
     p_qty,
     cat_id,
+    //cat_name,
     p_date,
     p_size,
     p_imagefront,
@@ -26,6 +27,23 @@ module.exports = class Product {
     this.description = description;
   }
 
+  static deleteProduct(id){
+   return new Promise((resolve,reject)=>{
+     pool.getConnection((err,con)=>{
+       if(!err)
+       {
+         var sql="delete from product where id=?";
+         con.query(sql,[id],(err,result)=>{
+          con.release();
+          err? reject(err):resolve(result);
+         });
+       }
+       else
+       { reject(err); }
+     });
+   });
+  }
+  
   saveProduct() {
     return new Promise((resolve, reject) => {
       pool.getConnection((err, con) => {
@@ -39,6 +57,7 @@ module.exports = class Product {
               this.p_price * 1,
               this.p_qty * 1,
               this.cat_id * 1,
+              //this.cat_name,
               this.p_date,
               this.p_size,
               this.p_imagefront,
@@ -57,6 +76,7 @@ module.exports = class Product {
     });
   }
 
+  
   viewProduct()
     {
         return new Promise((resolve,reject)=>{
@@ -80,7 +100,7 @@ module.exports = class Product {
       pool.getConnection((err, con) => {
         if (err) reject(err);
         else {
-          let sql = "select * from product where cat_id = 1";
+          let sql = "select * from product where cat_id = 9";
           con.query(sql, (err, result) => {
              con.release();
             if (err) reject(err);
@@ -96,8 +116,8 @@ module.exports = class Product {
       pool.getConnection((err, con) => {
         if(err)
          reject(err);
-        else {
-          let sql = "select * from product where cat_id = 2";
+ else {
+          let sql = "select * from product where cat_id = 10";
           con.query(sql, (err, result) => {
             con.release();
             if (err) reject(err);
@@ -108,8 +128,7 @@ module.exports = class Product {
     });
   }
 
-
-static fetchAllProduct(){
+  static fetchAllProduct(){
         return new Promise((resolve,reject)=>{
             pool.getConnection((err,con)=>{
                 if(err)
@@ -121,12 +140,15 @@ static fetchAllProduct(){
                      if(err)
                       reject(err);
                      else
-                      resolve(result);
+                      { 
+                        console.log("result");
+                        resolve(result);
+                      }
                   });
                 
                 }
             });
-        })
+        });
     }
 
  fetchProductById(id){
@@ -134,20 +156,19 @@ static fetchAllProduct(){
             pool.getConnection((err,con)=>{
                 console.log(id);
                 if(err)
-                reject(err);
-                else{
-                let sql = "select * from product where id =?";
-                  con.query(sql,[parseInt(id)],(err,result)=>{
-                      con.release();
-                     if(err)
-                      reject(err);
-                     else
-                      resolve(result);
-                  });
-                
+                  reject(err);
+                else
+                {
+                  let sql = "select * from product where id =?";
+                    con.query(sql,[id],(err,result)=>{
+                        con.release();
+                      if(err)
+                        reject(err);
+                      else
+                        resolve(result);
+                    });
                 }
             });
         })
     }
 }
-

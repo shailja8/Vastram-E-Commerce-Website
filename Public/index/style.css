@@ -169,8 +169,9 @@
 }
 
 .product-price{
-  font-weight:700;
-  font-size: 30px;
+  font-weight:600;
+  font-size: 26px;
+  font-family: philosopherregular;
 }
 .product-size{
   font-size: 20px;
@@ -226,6 +227,10 @@
 }
 .cart-btn:hover{
   color: goldenrod;
+}
+.card:hover{
+   /* border: 1px solid #192537; */
+   box-shadow: 0 0 10px white;
 }
 
 .footerFontColor{
