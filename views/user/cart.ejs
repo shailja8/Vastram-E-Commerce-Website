@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%=title%></title>
+  <%-include('partial/_bootstrap.ejs')%>
+  <link rel="stylesheet" href="css/style.css"/>
+   <style>
+     .card{
+       width: 300px;
+       min-height: 300px;
+     }
+     .card-img-top{
+       width: 100%;
+       height: 200px;
+     }
+   </style>
+</head>
+<body>
+<script>
+    function getCartItem(){
+      $.ajax({
+          url: '/cart/get-cart-item-local',
+          success: function(result){
+            for(index=0; index< result.length; index++)
+              result[index].productQty = 1;
+            localStorage.setItem("item-list",JSON.stringify(result));
+          }
+      });
+    }
+    getCartItem();
+</script>    
+<%- include('partial/_navigation.ejs')%>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+         <table class="table">
+           <tr>
+               <th>Image</th>
+               <th>Product-Info</th>
+               <th>Price</th>
+               <th>Qty</th>
+               <th>Total</th>
+               <th>Remove</th>
+           </tr>
+           <tbody>
+               <%for(index=0; index < cartItemList.length; index++){%>
+                <tr>
+                    <td><img width="100px" height="100px" src="/images/<%=cartItemList[index].frontViewImage%>"/></td>
+                    <td>
+                        <b>Name :</b> <%=cartItemList[index].productName%>
+                        <br><b>Desc :</b> <%=cartItemList[index].productDescription%>
+                        <br><b>In stock :</b> <%=cartItemList[index].productQty%>
+                    </td>
+                    <td><%=cartItemList[index].productPrice%></td>
+                    <td>
+                        <input onchange="updateQty(this.value,'<%=cartItemList[index].productPrice%>','<%=index%>')" style="width:60px;" type="number" min="1" max="<%=cartItemList[index].productQty%>"/>
+                    </td>
+                    <td><span id="total<%=index%>"></span></td>
+                    <td>
+                        <button class="btn btn-danger">Remove</button>
+                    </td>
+                </tr> 
+               <%}%> 
+           </tbody>
+         </table>
+         <div class="row justify-content-center p-5">
+             <button data-toggle="modal" data-target="#myModal" class="btn btn-primary">Place Order</button>
+         </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Address Information</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          
+          <div class="form-group">
+              <label>Address</label>
+              <textarea id="address" class="form-control"></textarea>
+          </div>
+          <div class="form-group">
+              <label>Contact Number</label>
+              <input type="text" id="contact" class="form-control"/>
+          </div>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button onclick="placeOrder()" type="button" class="btn btn-success">Done</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+<script>
+    function placeOrder(){
+       var address = document.getElementById("address").value;
+       var contact = document.getElementById("contact").value; 
+       var itemList =  localStorage.getItem("item-list");
+       $.ajax({
+           url: "/order/place-order/"+itemList+"/"+address+"/"+contact,
+           success : function(result){
+               alert("Order Placed......");
+           }
+       });
+    }
+    function updateQty(qty,price,index){
+      var spanObj = document.getElementById("total"+index);
+      var total = (qty*1) * (price*1);
+      spanObj.innerHTML = ""+total;
+      itemList = localStorage.getItem("item-list");
+      itemList = JSON.parse(itemList);
+      itemList[index].productQty = qty*1;
+      localStorage.setItem("item-list",JSON.stringify(itemList));
+    }
+</script>
+</body>
+</html>
