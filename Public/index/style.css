@@ -187,10 +187,10 @@
   height: 50px;
   padding-top: 10px;
   border-radius: 5px;
-  /* background: none; */
+  background: none;
   border: 1px solid #383838;
   color: #192537;
-  font-size: 15px;
+  /* font-size: 1px; */
   cursor: pointer;
   margin: 45px 26px;
   text-transform: capitalize;

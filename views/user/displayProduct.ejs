@@ -40,17 +40,14 @@
   <h4 style="font-family: philosopherregular; font-size: 18px;">Size Available : <%=product[0].p_size%></h4>
 
   <hr>  
- <button class="btn cart-btn">Add to cart</button>
  
   <%if(product[0].p_id){%>
-    <button onclick="addToCart(this,'<%=isLoggedIn%>','<%=product.id%>')" class="btn btn-primary">Remove From Cart</button>
+    <button onclick="addToCart(this,'<%=isLoggedIn%>','<%=product.id%>')" class="btn cart-btn">Remove From Cart</button>
   <%}else{%>  
-    <button onclick="addToCart(this,'<%=isLoggedIn%>','<%=product.id%>')" class="btn btn-primary">Add To Cart</button>
+    <button onclick="addToCart(this,'<%=isLoggedIn%>','<%=product.id%>')" class="btn cart-btn">Add To Cart</button>
   <%}%>
 <!-- <a href="/cart/add-to-cart/<%=product[0].id%>"><button class="btn cart-btn">Add to cart</button> </a> -->
    
-   
-   <button class="btn wishlist-btn">Add to wishlist</button>
    <!-- <a href="/wishlist/add-to-wishlist"><button class="btn wishlist-btn">Add to wishlist</button></a> -->
  
  <%if(!product[0].id){%>
@@ -60,7 +57,6 @@
 <%}%>
    <br>
    <br>
-   <br> 
   <h4 style="font-family: philosopherregular;">Description </h4>
 
  <p class="product-desc" style="font-family: philosopherregular;"><%=product[0].description%></p>
@@ -82,7 +78,7 @@
         });
         
        }
-    }   
+       
       else if(buttonText == "Remove From Wishlist"){
         $.ajax({
           url: "/wishlist/remove-to-wishlist/"+pid,
@@ -99,5 +95,6 @@
   }
 
 </script>
+<%- include('../partial/index-partial/_footer.ejs')%>
 </body>
 </html>

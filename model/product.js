@@ -151,7 +151,7 @@ module.exports = class Product {
         });
     }
 
- fetchProductById(id){
+ static fetchProductById(id){
         return new Promise((resolve,reject)=>{
             pool.getConnection((err,con)=>{
                 console.log(id);
