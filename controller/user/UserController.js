@@ -91,9 +91,10 @@ exports.womenPage =(request,response)=>{
 exports.displayProductPage = (request,response)=>{
     const id = request.params.id;
     Product.fetchProductById(id).then(result=>{
-         console.log(result);
+         console.log(result[0].id);
         response.render("user/displayProduct.ejs",{
-            product : result
+            product : result,
+            isLoggedIn: request.session.current_user
         });
     }).catch(err=>{
         console.log(err);

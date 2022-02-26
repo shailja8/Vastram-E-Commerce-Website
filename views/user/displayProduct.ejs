@@ -38,13 +38,52 @@
   <span class="product-price">&#8377; <%=product[0].p_price%>.00</span>
   <p style="font-size: 12px; padding-bottom: 5px; padding-top: -5px;">( inclusive of all taxes ) </p>
   <h4 style="font-family: philosopherregular; font-size: 18px;">Size Available : <%=product[0].p_size%></h4>
-  <hr>
+  <hr>  
  <button class="btn cart-btn">Add to cart</button>
- <button class="btn wishlist-btn">Add to wishlist</button>
-  <h4 style="font-family: philosopherregular;">Description </h4>
+ <!-- <a href="/wishlist/add-to-wishlist"><button class="btn wishlist-btn">Add to wishlist</button></a> -->
+ 
+ <%if(!product[0].id){%>
+  <button onclick="addToWishlist(this,'<%=isLoggedIn%>','<%=product[0].id%>')" class="btn wishlist-btn">Remove From Wishlist</button>
+<%}else{%>  
+  <button onclick="addToWishlist(this,'<%=isLoggedIn%>','<%=product[0].id%>')" class="btn wishlist-btn">Add To Wishlist</button>
+<%}%>
+ 
+ <h4 style="font-family: philosopherregular;">Description </h4>
  <p class="product-desc" style="font-family: philosopherregular;"><%=product[0].description%></p>
 
 </div>
 </section>
+<script>
+  function addToWishlist(button,isLoggedIn,pid){
+    if(isLoggedIn){
+      console.log(pid);
+      var buttonText = button.innerText;
+      if(buttonText == "Add To Wishlist"){
+        $.ajax({
+          url: "/wishlist/add-to-wishlist/"+pid,
+          success: function(result){
+            alert("Item Added In Cart");
+            button.innerText = "Remove From Cart";
+          }
+        });
+        
+       }
+    }   
+      else if(buttonText == "Remove From Wishlist"){
+        $.ajax({
+          url: "/wishlist/remove-to-wishlist/"+pid,
+          success: function(result){
+            alert("Item Removed From Cart..");
+            button.innerText = "Add To Cart";
+          }
+        });
+      }
+    }
+    else
+      window.location.href = "/login";
+
+  }
+
+</script>
 </body>
 </html>
