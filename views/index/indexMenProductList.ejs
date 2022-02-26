@@ -30,20 +30,6 @@
   </div>
 </div>
 
-
-<!-- <head>
-  
-    <link rel="stylesheet" href="../index/style.css">
-</head> -->
-<!-- <body> -->
-  <!-- Page Content -->
-  
-  
-<br>
-<br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br>
-
-
   <div class="container">
     <div class="row">
       <% for(product of productList) {%>
@@ -65,14 +51,9 @@
                                                     
                                                     </p> -->
           </div>
-          <!-- <div class="card-footer"> -->
-          <!-- <form action="/user/add-to-cart" method="POST"> -->
-            <input type="hidden" name="id" value="<%=product.id%>">
-            <!-- <button type="submit" class="btn btn-primary">Add to Cart</button> -->
-        </form>
-         <!-- </div> -->
-
           
+            <input type="hidden" name="id" value="<%=product.id%>">
+        
         </div>
       </div>
       <% } %>

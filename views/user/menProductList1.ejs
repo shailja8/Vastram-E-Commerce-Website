@@ -1,47 +1,63 @@
 <head>
+  <!-- <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <!-- <title>Document</title> -->
   <%- include('../partial/index-partial/_bootstrap_files.ejs')%>
-    <link rel="stylesheet" href="../index/style.css">
+  <link rel="stylesheet" href="../index/style.css">
+  <link rel="stylesheet" href="../index/style1.css">
 </head>
 <body>
-  <!-- Page Content -->
   <%- include('../partial/user-partial/_navigation1.ejs')%>
-
-  <div class="container">
-    <div class="row">
-      <% for(product of productList) {%>
-      <div class="col-lg-3 col-md-5 mt-5 mb-3">
-        <div class="card h-100">
-          <a href="/user/displayProduct/<%=product.id%>"
-            ><img
-              class="card-img-top"
-              src="/admin/images/<%= product.p_imagefront%>"
-              alt=""
-              height="400px"
-          /></a>
-          <div class="card-body">
-            <h4 class="card-title" style="font-size: 18px; text-align: center; font-family: philosopherregular; color:#192537;">
-            <%= product.p_name%> 
-            </h4>
-            <h5 style="font-size: 20px; font-weight: 600; text-align: center; font-family: philosopherregular; color:#192537;">&#8377; <%= product.p_price%></h5>
-            <!-- <p class="card-text"              </p> -->
-          </div>
-          <!-- <div class="card-footer">
-          <form action="/user/add-to-cart" method="POST"> -->
-            <input type="hidden" name="id" value="<%=product.id%>">
-            <!-- <button type="submit" class="btn btn-primary">Add to Cart</button> -->
-        <!-- </form> -->
-         <!-- </div> -->
-
-          
-        </div>
-      </div>
-      <% } %>
+  <div class="col-md-6">
+    <div class="paragraph">
+    <h1>
+        <span class="text" >Finest</span>
+    </h1>
+    <h6><span class="text1">WEDDING COLLECTION</span></h6>
     </div>
-    <!-- /.row -->
+    <div class="paragraph">
+                <h3 class="colorheading">Groom Sherwani</h3>
+                <h5><span class="colorheading">COLLECTION</span></h5>
+                <p>ARE YOU READY JUST LIKE RANVEER?<br> #TAIYAARHOKARAIYE<br>“DulheWaliFeeling”.</p>
+            </div>
+</div>
+
+
+<div class="col-md-6">
+    <img  class="img" src="/index/images/sherwani10.png" width="600px" height="575px">
+</div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% for(product of productList) {%>
+    <div class="col-lg-3 col-md-5 mt-5 mb-3">
+      <div class="card h-100">
+        <a href="/user/displayProduct/<%=product.id%>"
+          ><img
+            class="card-img-top"
+            src="/admin/images/<%= product.p_imagefront%>"
+            alt=""
+            height="400px"
+        /></a>
+        <div class="card-body">
+          <h4 class="card-title" style="font-size: 18px; text-align: center; font-family: philosopherregular; color:#192537;">
+            <%= product.p_name%>
+          </h4>
+          <h5 class="card-title" style="font-size: 20px; font-weight: 600; text-align: center; font-family: philosopherregular; color:#192537;">&#8377; <%= product.p_price%></h5>
+          <!-- <p class="card-text">
+                                                  
+                                                  </p> -->
+        </div>
+        
+          <input type="hidden" name="id" value="<%=product.id%>">
+      
+      </div>
+    </div>
+    <% } %>
   </div>
-  <!-- /.col-lg-9 -->
+</div>
 
-  <!-- /.row -->
-
-  <!-- /.container -->
+<%- include('../partial/index-partial/_footer.ejs')%>
 </body>
