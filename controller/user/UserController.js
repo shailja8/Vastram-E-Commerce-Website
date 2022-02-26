@@ -13,12 +13,13 @@ exports.loginPost = (request,response)=>{
     user.checkUser().then(result=>{
        
         if(result.length>0){
+            console.log(result);
             request.session.current_user = result[0].id; 
           response.redirect("/user/dashboard");   
         }
         else
         { console.log(result);
-         response.send(result+"\n Please Enter Email and Password");
+         response.send(result+"Please Enter Email and Password");
         }
     }).catch(err=>{
          console.log(err);
