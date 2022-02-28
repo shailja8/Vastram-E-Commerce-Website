@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+    padding-top: 0px;
+    margin-top: 0px;
+  }
+
+  .navbar {
+    background-color: #192537;
+  }
+
+  .nav-item {
+    color: #4e4719;
+  }
+
+  .navbar {
+    background-color: #252a30;
+  }
+  .banner{
+    background-image: linear-gradient(rgba(82, 73, 58, 0.5), rgba(78, 72, 62, 0.5)),url("/admin/images//4456.jpeg");
+    background-size: cover;  
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    margin-top: -20px;
+   }
+ 
+  body {
+    font-family: Verdana, sans-serif;
+  }
+  
+  .con{
+    color: azure;
+  }
+  .r1{
+    padding:50px 300px;
+  }
+  #welcome{
+    font-family:'Times New Roman', Times, serif;
+    padding-top: 20px;
+      }
+  #h3{
+    padding-top: 40px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 22px;
+  }
+  #p2{
+    padding-top: 40px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+  }

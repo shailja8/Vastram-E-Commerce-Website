@@ -17,4 +17,7 @@ request.get("/edit/:id",authenticate.authenticate_user,adminController.adminEdit
 
 request.get("/query",authenticate.authenticate_user,adminController.fetchQuery);
 
+request.get("/homepage",authenticate.authenticate_user,adminController.getHomepage);
+request.post("/send-response",authenticate.authenticate_user,adminController.sendResponse);
+request.get("/sendresponse/:email",authenticate.authenticate_user,adminController.sendResponsePage);
 module.exports=request;
