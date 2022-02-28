@@ -16,20 +16,30 @@
     font-family:  Simplifica;
   
   }
+
+   .navbar a:hover{
+    
+    border: 1px solid #B09E80;
+  }
+  .dropdown-item {
+    background: #192537;
+  }
   
   /* .navbar a:hover {
-    background-color: #000;
+    background-color: #B57A51;
+
+    a.ex5:hover, a.ex5:active {text-decoration: underline;}
   } */
 
   i.fa.fa-heart {
     color: red;
     margin-block:auto;
-    padding: 10px;
+    padding: 5px;
   }
   i.fa.fa-shopping-bag{
     color: #E75480;
     margin-block:auto;
-    
+    padding: 5px;
   }
   .input-search{
     background-color: #B09E80 !important;
@@ -55,6 +65,7 @@
   .carousel-inner img{
     margin-left: 20px;
     margin-top: 20px;
+    
     /* border: 2px solid #192537;
     border-radius: 5px; */
   }
@@ -77,6 +88,9 @@
       #dropdownMenuButton1{
       margin: 10px;
       color: #B09E80;
+      }
+      .dropdown-item{
+        background-color: #192537;
       }
       #fontdisplay{
         margin-top: 20px;
