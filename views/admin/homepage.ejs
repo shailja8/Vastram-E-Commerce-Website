@@ -1,22 +1,56 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>Homepage</title>
+  <title>Admin Dashboard</title>
   <%- include('../partial/admin-partial/_bootstrap_files.ejs')%>
-    <style>
-      .navbar {
-        background-color: #192537;
-      }
-
-      .nav-item {
-        color: #4e4719;
-      }
-    </style>
+  <link rel="stylesheet" href="/admin/css/stylehomepage.css"/>
+    <style></style>
 </head>
 
 <body>
  <%- include('../partial/admin-partial/_admin_nav.ejs')%>
-</body>
+ <div class="container-fluid banner">
+  <div class="row r1">
+    <div class="col-md-12 con">
+      <img src="/admin/images/89-removebg-preview.png" class="img-fluid" height="250px" width="250px"/>
+      <h1 id="welcome">Welcome in Vastram Admin Dasboard</h1>
+      <h3 id="h3">CELEBRATING 22 YEARS OF CELEBRATION WEAR</h3>
+      <p id="p2"> Vastram dress the world’s
+        elite with finest Indian elegance.
+        <br>In 1999, Mr. Ravi Modi created a family business that re-invented men’s ethnic wear category. 
+        <br>During the course of its evolution, it became synonymous with wedding wear.</p>
+    </div>
+  </div>
+ </div>
 
+  <main class="mt-5">
+    <div class="container">
+      <section>
+        <div class="row">
+          <div class="col-md-6 gx-5 mb-4">
+            <div class="bg-image hover-overlay ripple shadow-2-strong mt-2" data-mdb-ripple-color="light">
+              <img src="/admin/images/index-vastram-logo.png" class="img-fluid" />
+            </div>
+          </div>
+          <div class="col-md-6 gx-5 mb-4">
+            <h4><strong>Cheers to every occassion.</strong></h4>
+            <p class="text-muted">
+             There is rarely any occasion that surpasses the opulence and glamour of an Indian wedding. What makes it so grand is the sheer effort that is put into each and every task along with the elaborate Indian customs and traditions. Among the plethora of tasks that need to be executed perfectly, one of the most important ones is finalising the wedding ensemble for the bride and groom. While the options for wedding dresses are practically endless, bridal lehengas are possibly the most favoured choice.
+            </p>
+          </div>
+        </div>
+      </section>
+   </div>
+  </main>   
+    
+     <footer>
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-dark" href="#">Vastram.com</a>
+      </div>
+    </footer>
+</body>
+</html>
+
+</body>
 </html>

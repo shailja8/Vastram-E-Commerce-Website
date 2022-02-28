@@ -30,10 +30,10 @@ exports.saveProduct = (req, res, next) => {
     product.saveProduct()
         .then((result) => {
         res.send("Data added succesfully");
-        res.redirect("/admin/homepage");
+       
         })
         .catch((err) => {
-        console.log(err);
+         console.log(err);
          res.send("Something went wrong!");
         });
 };
