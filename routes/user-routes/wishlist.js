@@ -8,4 +8,6 @@ request.get("/add-to-wishlist/:p_id",auth.isAuth,wishlistRouter.addToWishlist);
 
 request.get("/remove-from-wishlist/:p_id",auth.isAuth,wishlistRouter.removeFromWishlist);
 
+request.get("/view-wishlist",wishlistRouter.viewWishlist);
+
 module.exports= request;
