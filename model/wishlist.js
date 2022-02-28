@@ -1,16 +1,16 @@
 const pool = require('../connection/DbConnection');
 const { use } = require('../routes/index-routes');
 module.exports = class Wishlist{
-    constructor(user_id,p_id){
-        this.user_id = user_id;
-        this.p_id = p_id;
+    constructor(wish_user_id,wish_p_id){
+        this.wish_user_id = wish_user_id;
+        this.wish_p_id = wish_p_id;
     }
     addToWishlist(){
         return new Promise((resolve,reject)=>{
            pool.getConnection((err,con)=>{
                 if(!err){
-                    let sql ="insert into wishlist(user_id,p_id) values(?,?)";
-                    con.query(sql,[this.user_id,this.p_id],(err,results)=>{
+                    let sql ="insert into wishlist(wish_user_id,wish_p_id) values(?,?)";
+                    con.query(sql,[this.wish_user_id,this.wish_p_id],(err,results)=>{
                        if(err)
                           reject(err);
                         else
@@ -22,12 +22,12 @@ module.exports = class Wishlist{
            });
         });
     }
-    removeToWishlist(){
+    removeFromWishlist(){
         return new Promise((resolve,reject)=>{
             pool.getConnection((err,con)=>{
                  if(!err){
-                     let sql ="delete from wishlist where user_id=? and p_id=?";
-                     con.query(sql,[this.user_id,this.p_id],(err,results)=>{
+                     let sql ="delete from wishlist where wish_user_id=? and wish_p_id=?";
+                     con.query(sql,[this.wish_user_id,this.wish_p_id],(err,results)=>{
                         if(err)
                            reject(err);
                          else

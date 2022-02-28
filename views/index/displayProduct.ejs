@@ -10,29 +10,31 @@
     <link type="text/css" href="/index/magnifier.css" rel="stylesheet">
     <script type="text/javascript" src="/index/js/magnifier.js"></script>
 </head>
+
 <body>
     <%- include('../partial/index-partial/_navigation.ejs')%>
- 
 <section class="product-display">
+ 
+  <div class="col sidecolumn">
+    <div class="sideimage">
+      <img src="/admin/images/<%=product[0].p_imagefront%>"  onclick="changeImage(this)" alt="">
+      <img src="/admin/images/<%=product[0].p_imageleft%>"  onclick="changeImage(this)" alt="">
+      <img src="/admin/images/<%=product[0].p_imageright%>"  alt="">
+      <img src="/admin/images/<%=product[0].p_imageback%>"   alt="">
+    </div>
+  </div>
+
+   <%image=product[0].p_imagefront%> 
   <div class="image-slider">
-    
-    <!-- <div class="product-images">
-      <img src="\index\images\indo-western2.jpg" class="active" alt="">
-      <img src="\index\images\indo-western3.jpg" alt="">
-      <img src="\index\images\indo-western4.jpg" alt="">
-      <img src="\index\images\indo-western5.jpg" alt="">
-    </div> -->
     <div class="magnifier" style="height: 630px; width: 450px; margin: 0px;">
       <div class="maglens">
-        <img class="maglarge" alt="example image" ismap="ismap" usemap="#kaart" src="/admin/images/<%=product[0].p_imagefront%>" style="height:1500px; width:1500px;"/>
+        <img class="maglarge" id="myimage" alt="example image" ismap="ismap" usemap="#kaart" src="/admin/images/<%=image%>" style="height:1500px; width:1500px;"/>
       </div>
     </div>
   </div>
 
-
   <div class="details">
     <h2 class="product-name" style="font-size: 24px; font-family: philosopherregular; color: #192537;"><%=product[0].p_name%></h2>
-
   <span class="product-price">&#8377; <%=product[0].p_price%>.00</span>
   <p style="font-size: 12px; padding-bottom: 5px; padding-top: -5px;">( inclusive of all taxes ) </p>
   <h4 style="font-family: philosopherregular; font-size: 18px;">Size Available : <%=product[0].p_size%></h4>
@@ -45,5 +47,20 @@
 
 </div>
 </section>
+   
+<script>
+  function changeImage(currentImageObject){
+                 alert(currentImageObject.src);
+
+                 var bigImageObject = document.getElementById("myimage");
+                 if(currentImageObject.src == '/admin/images/<%=product[0].p_imagefront%>'){
+                    bigImageObject.src='/admin/images/<%=product[0].p_imagefront%>';
+                 }
+                 else if(currentImageObject.src == '/admin/images/<%=product[0].p_imageleft%>'){
+                  bigImageObject.src='/admin/images/<%=product[0].p_imageleft%>';
+                 }
+                 
+              }
+</script>
 </body>
 </html>
