@@ -23,6 +23,9 @@ request.get("/displayProduct/:id",userRouter.displayProductPage);
 
 request.get("/about-us",userRouter.aboutPage);
 
+request.get("/contact-us",userRouter.contactPage);
+
+
 // request.get();
 
 // request.post("/add-to-cart",userRouter.addToCart);

@@ -91,25 +91,22 @@ exports.womenPage =(request,response)=>{
 
 exports.displayProductPage = (request,response)=>{
     const id = request.params.id;
-    Product.fetchProductById(id).then(result=>{
-         console.log(result[0].id);
+    console.log("id................................"+id);
+    console.log("current_user_id---------------------"+request.session.current_user);
+    Product.fetchProductById(id,request.session.current_user).then(result=>{
+         console.log("Result................................."+result);
+         console.log(result);
+         console.log(request.session.current_user);
         response.render("user/displayProduct.ejs",{
             product : result,
             isLoggedIn: request.session.current_user
+        
         });
     }).catch(err=>{
         console.log(err);
         response.send("something went wrong");
     });
 }
-
-// exports.addToCart = (request,response)=>{
-//         Product.findById(request.body.id)[0];
-//         Cart.save(addedProduct);
-//         response.redirect('Product added');
-//         console.log(Cart);
-//     }
-
 
 exports.aboutPage =(request,response)=>{
     response.render("user/about.ejs");

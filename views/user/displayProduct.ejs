@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,21 +11,25 @@
     <link type="text/css" href="/index/magnifier.css" rel="stylesheet">
     <script type="text/javascript" src="/index/js/magnifier.js"></script>
 </head>
+
 <body>
   <%- include('../partial/user-partial/_navigation1.ejs')%>
  
 <section class="product-display">
+  <div class="col sidecolumn">
+    <div class="sideimage">
+      <img src="/admin/images/<%=product[0].p_imagefront%>" alt="">
+      <img src="/admin/images/<%=product[0].p_imageleft%>"  alt="">
+      <img src="/admin/images/<%=product[0].p_imageright%>" alt="">
+      <img src="/admin/images/<%=product[0].p_imageback%>"  alt="">
+
+    </div>
+  </div>
+  <%image = product[0].p_imagefront%>
   <div class="image-slider">
-    
-    <!-- <div class="product-images">
-      <img src="\index\images\indo-western2.jpg" class="active" alt="">
-      <img src="\index\images\indo-western3.jpg" alt="">
-      <img src="\index\images\indo-western4.jpg" alt="">
-      <img src="\index\images\indo-western5.jpg" alt="">
-    </div> -->
     <div class="magnifier" style="height: 630px; width: 450px; margin: 0px;">
       <div class="maglens">
-        <img class="maglarge" alt="example image" ismap="ismap" usemap="#kaart" src="/admin/images/<%=product[0].p_imagefront%>" style="height:1500px; width:1500px;"/>
+        <img class="maglarge" alt="example image" ismap="ismap" usemap="#kaart" src="/admin/images/<%=image%>" style="height:1200px; width:1200px;"/>
       </div>
     </div>
   </div>
@@ -36,19 +41,16 @@
   <span class="product-price">&#8377; <%=product[0].p_price%>.00</span>
   <p style="font-size: 12px; padding-bottom: 5px; padding-top: -5px;">( inclusive of all taxes ) </p>
   <h4 style="font-family: philosopherregular; font-size: 18px;">Size Available : <%=product[0].p_size%></h4>
-
+  
   <hr>  
  
   <%if(product[0].p_id){%>
-    <button onclick="addToCart(this,'<%=isLoggedIn%>','<%=product.id%>')" class="btn cart-btn">Remove From Cart</button>
+    <button onclick="addToCart(this,'<%=isLoggedIn%>','<%=product[0].id%>')" class="btn cart-btn">Remove From Cart</button>
   <%}else{%>  
-    <button onclick="addToCart(this,'<%=isLoggedIn%>','<%=product.id%>')" class="btn cart-btn">Add To Cart</button>
+    <button onclick="addToCart(this,'<%=isLoggedIn%>','<%=product[0].id%>')" class="btn cart-btn">Add To Cart</button>
   <%}%>
-<!-- <a href="/cart/add-to-cart/<%=product[0].id%>"><button class="btn cart-btn">Add to cart</button> </a> -->
-   
-   <!-- <a href="/wishlist/add-to-wishlist"><button class="btn wishlist-btn">Add to wishlist</button></a> -->
  
- <%if(!product[0].id){%>
+ <%if(product[0].wish_p_id){%>
   <button onclick="addToWishlist(this,'<%=isLoggedIn%>','<%=product[0].id%>')" class="btn wishlist-btn">Remove From Wishlist</button>
 <%}else{%>  
   <button onclick="addToWishlist(this,'<%=isLoggedIn%>','<%=product[0].id%>')" class="btn wishlist-btn">Add To Wishlist</button>
@@ -62,9 +64,10 @@
 </div>
 </section>
 <script>
+  
   function addToWishlist(button,isLoggedIn,pid)
-  {
-    if(isLoggedIn){
+  {   
+    console.log(isLoggedIn);
       console.log(pid);
       var buttonText = button.innerText;
       if(buttonText == "Add To Wishlist")
@@ -72,26 +75,56 @@
         $.ajax({
           url: "/wishlist/add-to-wishlist/"+pid,
           success: function(result){
-            alert("Item Added In Cart");
-            button.innerText = "Remove From Cart";
+            alert("Item Added In Wishlist");
+            button.innerText = "Remove From Wishlist";
           }
         });     
       }  
       else if(buttonText == "Remove From Wishlist"){
         $.ajax({
-          url: "/wishlist/remove-to-wishlist/"+pid,
+          url: "/wishlist/remove-from-wishlist/"+pid,
           success: function(result){
+            alert("Item Removed From Wishlist..");
+            button.innerText = "Add To Wishlist";
+          }
+        });     
+      }
+    }
+    
+
+  function addToCart(button,isLoggedIn,pid)
+  {
+    console.log(isLoggedIn+"is logged in");
+    alert(pid);
+    // if(isLoggedIn){
+      console.log(pid);
+      var buttonText = button.innerText;
+      if(buttonText == "Add To Cart")
+      {
+        $.ajax({
+          url: "/cart/add-to-cart/"+pid,
+          success: function(result){
+            alert("Item Added In Cart");
+            console.log(result);
+            button.innerText = "Remove From Cart";
+          }
+        });     
+      }  
+      else if(buttonText == "Remove From Cart"){
+        $.ajax({
+          url: "/cart/remove-from-cart/"+pid,
+          success: function(result){
+            console.log(result);
             alert("Item Removed From Cart..");
             button.innerText = "Add To Cart";
           }
         });     
       }
-        });
-    }
-  }
-    else
-      window.location.href = "/login";
-  }
+     }
+    // else
+    //   window.location.href = "/login";
+  
+
 </script>
 <%- include('../partial/index-partial/_footer.ejs')%>
 </body>

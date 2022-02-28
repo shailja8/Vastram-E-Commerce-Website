@@ -6,7 +6,8 @@ const request = express.Router();
 
 request.get("/add-to-cart/:p_id",cartController.addToCart);
 
-request.get("/remove-from-cart",cartController.removeFromCart);
+request.get("/remove-from-cart/:p_id",cartController.removeFromCart);
 
+// request.get("/view-cart",cartController.viewCart);
 
 module.exports = request;

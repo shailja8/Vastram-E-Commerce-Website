@@ -23,5 +23,25 @@ module.exports = class Cart{
         })
       }
     )}
+    
+    removeItemFromCart(){
+      return new Promise((resolve,reject)=>{
+        pool.getConnection((err,con)=>{
+          if(!err){
+              let sql = "delete from cart where user_id=? and p_id = ?";
+              con.query(sql,[this.user_id,this.p_id],(err,result)=>{
+                con.release();  
+                err ? reject(err) : resolve(result);
+              });
+          }
+          else
+          {
+            console.log(err);
+            reject(err);
+          }
+        })
+      }
+    )
+    }
 
 }
