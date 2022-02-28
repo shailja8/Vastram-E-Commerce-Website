@@ -13,6 +13,7 @@
 </head>
 
 <body>
+  <%- include('../partial/admin-partial/_admin_nav.ejs')%>
 <form action="/product/update-product" method="post" enctype="multipart/form-data">
  <div class="container"> 
   <input type="hidden" name="id" class="form-control" value="<%=result[0].id%>" />

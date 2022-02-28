@@ -35,4 +35,5 @@ app.use("/category",categoryRouter);
 
 app.use("/wishlist",wishlistRoute);
 
-app.listen(65000,()=>{console.log("--SERVER STARTED--")});
+app.listen(3000,()=>{console.log("--SERVER STARTED--")});
+
