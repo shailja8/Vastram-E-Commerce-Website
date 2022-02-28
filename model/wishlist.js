@@ -39,4 +39,22 @@ module.exports = class Wishlist{
             });
          });
     }
+    static fetchAllItemFromWishlist(wish_user_id){
+      return new Promise((resolve,reject)=>{
+        pool.getConnection((err,con)=>{
+             if(!err){
+                 let sql ="select * from wishlist where wish_user_id=?";
+                 con.query(sql,[wish_user_id],(err,results)=>{
+                    if(err)
+                       reject(err);
+                     else
+                       resolve(results);  
+                 });
+             }
+             else 
+               reject (err);
+        });
+     });
+
+    }
 }

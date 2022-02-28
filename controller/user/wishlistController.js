@@ -33,4 +33,16 @@ exports.removeFromWishlist = (request,response,next)=>{
          message: "error"
       });
    });
+   
+}
+
+exports.viewWishlist=(request,response,next)=>{
+   Wishlist.fetchAllItemFromWishlist(request.session.current_user)
+   .then(result=>{
+     console.log(result); 
+    response.render("user/wishlist.ejs")
+   }).catch(err=>{
+       console.log(err);
+       return response.send("err.....");
+   });
 }
