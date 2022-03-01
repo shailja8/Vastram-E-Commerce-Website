@@ -21,7 +21,10 @@
       <!-- Grid column -->
       <div class="col-md-3">
           <h5 class="text-uppercase text-white dark">Support</h5>
-          <p class="footerFontColor">Ask Queries<br>
+          <!-- <a href="#" class="footerFontColor" data-toggle="modal" data-target="query"></a>Ask Queries<br> -->
+          <p class="footerFontColor">
+            <a class="footerFontColor" href="#" data-toggle="modal" data-target="#query">Ask Queries</a>
+            <br>
                   Terms of User<br>
                   Privacy Policy<br>
                   Shipping Details</p>
@@ -65,4 +68,40 @@
   </div>
   <!-- Copyright -->
 
-</footer>
+
+ </footer>
+<!-- Modal -->
+<div class="modal fade" id="query">
+  <div class="modal-dialog modal-dialog-centered">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="model-header">
+      <!-- <div class="modal-header"> -->
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center"> Ask Query </h4>
+    </div>
+      <!-- </div> -->
+      <div class="modal-body">
+          <form action="/query" method="post" >
+           <div class="form-group">
+               <label>Enter Name</label>
+               <input type="text" name="name" class="form-control"/>
+           </div>
+           <div class="form-group">
+            <label>Enter Email</label>
+            <input type="email" name="email" class="form-control"/>
+           </div>
+           <div class="form-group">
+            <label>Enter Your Query</label>
+            <!-- <input type="text" name="" class="form-control"/> -->
+            <textarea name="query" class="form-control"></textarea>
+          </div>
+          <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+          <button class="btn btn-success" type="Submit">Send</button>
+
+        </div>
+       </form>
+      </div>
+    </div>   
+   </div> 

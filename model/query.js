@@ -1,6 +1,5 @@
 const pool = require("../connection/DbConnection");
 const nodemailer = require("nodemailer");
-
 module.exports = class SendRes
 {
      constructor(message,name,email)
@@ -11,16 +10,20 @@ module.exports = class SendRes
         console.log("query "+ message);
      }
 
+
+
     send(){
         return new Promise((resolve,reject)=>{
             pool.getConnection((err,con)=>{
                 if(!err){
-                  var sql = "insert into query(username,useremail,userquery) values(?,?,?)";
+                  var sql = "insert into query(name,email,query) values(?,?,?)";
+
                   con.query(sql,[this.name,this.email,this.query],(err,result)=>{
                       con.release;
                       err ? reject(err) :resolve(result);
                   });
                 }else
+            //    console.log(Error);
                 reject(err);
             });
         });

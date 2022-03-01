@@ -57,8 +57,6 @@ exports.sendResponse = (req, res) => {
   console.log(req.body.message);
   var query = new QueryModal(req.body.message);
   var mail = req.body.email;
-  console.log("new " + mail);
-  console.log("new " + req.body.message);
   query.sendMail(mail)
     .then((result) => {
       res.send("Response sent successfully.");

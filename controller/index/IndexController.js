@@ -1,4 +1,4 @@
-const { response } = require("express");
+// const { response } = require("express");
 //const Query = require("mysql/lib/protocol/sequences/Query");
 const Product = require("../../model/product.js");
 const Query = require("../../model/query"); 
@@ -49,11 +49,16 @@ exports.displayProductPage = (request,response)=>{
             response.send("something went wrong");
         });
 }
-exports.queryPage =(request,response)=>{
-    var q = new Query;
-    q.send().then(()=>{
+exports.queryPage =(request,response,next)=>{
+    const q = new Query();
+    q.name = request.body.name;
+    q.email = request.body.email;
+    q.query = request.body.query;
+    q.send().then((result)=>{
       response.send("Query Sent.");
+    //   response.redirect("/index/index.ejs");
     }).catch((err)=>{
+        console.log(err);
       response.send("Something went wrong!")
     });
 }
