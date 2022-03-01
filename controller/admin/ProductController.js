@@ -1,6 +1,7 @@
 const Category = require("../../model/Category");
 const Product = require("../../model/product");
-const path = require("path");
+const path = require('path');
+const alert= require('alert');
 
 exports.saveProduct = (req, res, next) => {
     let product = new Product();
@@ -11,11 +12,11 @@ exports.saveProduct = (req, res, next) => {
     if (req.files.length > 0) {
         product.p_imagefront = req.files[0].filename;
         if (req.files.length > 1) {
-        product.p_imageback = req.files[1].filename;
-        if (req.files.length > 2) {
-            product.p_imageleft = req.files[2].filename;
-            if (req.files.length > 3) {
-            product.p_imageright = req.files[3].filename;
+           product.p_imageback = req.files[1].filename;
+          if (req.files.length > 2) {
+             product.p_imageleft = req.files[2].filename;
+             if (req.files.length > 3) {
+               product.p_imageright = req.files[3].filename;
             }
         }
         }
@@ -29,8 +30,9 @@ exports.saveProduct = (req, res, next) => {
 
     product.saveProduct()
         .then((result) => {
-        res.send("Data added succesfully");
-       
+        res.send("Product added succesfully");
+        //alert('Data added succesfully');
+        // res.redirect("/admin/homepage");
         })
         .catch((err) => {
          console.log(err);
@@ -41,24 +43,25 @@ exports.saveProduct = (req, res, next) => {
 exports.deleteProduct =(req,res) =>{
   Product.deleteProduct(req.params.id)
   .then((result)=>{
-    res.send("Deleted successfully");
+    res.send("Product Deleted Successfully");
   })
   .catch((err)=>{
-    res.send(err);
+    console.log(err);
+    res.send("Oops! Something went wrong!");
   });
 }
 
 exports.editProduct=(req,res,next)=>{
- //var product=new Product();
  Product.fetchProductById(req.params.id)
  .then((result)=>{
-    res.redirect("/admin/edit-product.ejs",{ result });
+    res.render("./admin/edit-product.ejs", { result });
  })
  .catch((err)=>{
-   res.send("Something went wrong");
+   res.send("Oops! Something went wrong!");
    console.log(err);
  });
 }
+
 exports.updateProduct=(req,res,next)=>{
    var product = new Product();
     product.p_name = req.body.p_name;
@@ -84,21 +87,20 @@ exports.updateProduct=(req,res,next)=>{
     }
     product.saveproduct()
         .then((result) => {
-        res.send("Data Updated succesfully");
+        res.send("Product Updated succesfully");
         // res.redirect("/admin/homepage");
         })
         .catch((err) => {
         console.log(err);
-        return res.send("Something went wrong!");
+        return res.send("Oops! Something went wrong!");
         });
 }
 
-exports.addProduct = (req, res, next) => {
+exports.addProduct = (req, res) => {
   Category.fetchAllCategory()
     .then((results) => {
       console.log(results);
       return res.render("admin/add-product.ejs", {
-        //title: "Add Product",
         categories: results,
       });
     })
@@ -107,6 +109,19 @@ exports.addProduct = (req, res, next) => {
       return res.send("Oops! Somethimg went wrong.");
     });
 };
+
+exports.editProductPage=(req,res)=>{
+  Promise.all([Category.fetchAllCategory(),Product.fetchProductById(req.params.id)])
+  .then((result)=>{
+   console.log(result);
+   res.render("admin/edit-product.ejs",{categories:result[0], pDetails : result[1]});
+  })
+  .catch((err) => {
+    console.log(err);
+    return res.send("Oops! Somethimg went wrong.");
+  });
+
+}
 
 exports.viewproductpage = (req,res) => {
   var product = new Product();

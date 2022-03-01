@@ -16,10 +16,10 @@
     background-color: #252a30;
   }
   .banner{
-    background-image: linear-gradient(rgba(82, 73, 58, 0.5), rgba(78, 72, 62, 0.5)),url("/admin/images//4456.jpeg");
+    background-image: linear-gradient(rgba(17, 17, 17, 0.7), rgba(44, 42, 39, 0.7)),url("/admin/images/login-bg.jpeg");
     background-size: cover;  
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top;
     text-align: center;
     margin-top: -20px;
    }
