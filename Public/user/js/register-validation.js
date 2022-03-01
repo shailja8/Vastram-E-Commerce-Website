@@ -16,6 +16,7 @@ function validateData() {
       return true;
     return false;
   }
+  
   function validateMobile() {
     var status = true;
     var mobile = document.getElementById("mobile").value;

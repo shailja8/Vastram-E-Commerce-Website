@@ -1,22 +1,27 @@
 const Admin = require("../../model/Admin");
 const QueryModal = require("../../model/query");
+const alert = require('alert');
+const popup = require('node-popup');
 
 exports.getHomepage = (req, res) => {
   res.render("./admin/homepage.ejs");
 };
-exports.adminEdit = (req, res) => {
+
+exports.adminEditCategory = (req, res) => {
   var admin = new Admin();
   Admin.fetchAllData(req.params.id)
     .then((result) => {
       res.render("./admin/edit-category.ejs", { result });
     })
-    .catch((err) => {});
+    .catch((err) => {
+      console.log(err)
+    });
 };
 
 exports.adminDelete = (req, res) => {
   Admin.delete(req.params.id).then((result) => {
-      //alert("Category deleted successfully.")
-      res.send("Category deleted successfully");
+    //alert("deleted");
+     res.send("Deleted Successfully");
     })
     .catch();
 };
@@ -52,8 +57,6 @@ exports.sendResponse = (req, res) => {
   console.log(req.body.message);
   var query = new QueryModal(req.body.message);
   var mail = req.body.email;
-  console.log("new " + mail);
-  console.log("new " + req.body.message);
   query.sendMail(mail)
     .then((result) => {
       res.send("Response sent successfully.");
@@ -67,24 +70,35 @@ exports.loginpage = (req, res) => {
   res.render("./admin/adminlogin.ejs");
 };
 
-exports.loginpost = (req, res) => {
-  console.log(req.body.email + "in controller email");
-  console.log(req.body.password + "in controller password");
-  var admin = new Admin(req.body.email, req.body.password);
+exports.logOut =(req,res)=>{
+    req.session.destroy();
+    res.redirect("/admin/");  
+};
 
+exports.loginpost = (req, res) => {
+  var admin = new Admin(req.body.email, req.body.password);
   admin
     .checkLogin()
     .then((result) => {
-      req.session.current_user = req.body.email;
-      res.redirect("/admin/homepage");
+      if(result.length>0)
+      {
+        console.log(result);
+        req.session.current_user = result[0].id; 
+        res.redirect("/admin/homepage");   
+      }
+      else
+      { 
+        console.log(result);
+        res.send(result+"Please Enter Correct Email and Password");
+      }
     })
     .catch((err) => {
-      res.redirect("/admin/adminlogin.ejs");
+      console.log(err);
+      res.redirect("/admin/");
     });
 };
 
 exports.admin_homepage = (req, res) => {
   res.render("admin/homepage.ejs", {
-    title: "Admin Homepage",
   });
 };

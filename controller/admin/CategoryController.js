@@ -7,7 +7,7 @@ exports.updateCategory = (req, res) => {
   category.catImg = req.file.filename;
   category.updateCategory(req.body.id)
     .then((result) => {
-    res.redirect("/admin/homepage");
+      res.send("Updated successfully");
     })
     .catch((err) => {
       res.send("Something went wrong");
@@ -20,8 +20,7 @@ exports.addCategory = (req, res, next) => {
   category.catImg = req.file.filename;
   category.saveCategory()
     .then((result) => {
-      // res.send("Category successfully added.");
-      res.redirect("/admin/homepage");
+      res.send("Category successfully added.");
     })
     .catch((err) => {
       res.send("Something Went Wrong");
